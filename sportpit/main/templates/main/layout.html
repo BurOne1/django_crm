@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titleblock %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/646065abfa.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!--<header>-->
+<!--    <div class="header_section">-->
+<!--        <div class="header_item headerButton">-->
+<!--            <a href="#">Главная</a>-->
+<!--        </div>-->
+<!--        <div class="header_item headerButton">-->
+<!--            <a href="#">Продукция</a>-->
+<!--        </div>-->
+<!--        <div class="header_item headerButton">-->
+<!--            <a href="#">Доставка</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="header_section">-->
+<!--        <div class="header_item headerButton">-->
+<!--            <a href="#">О нас</a>-->
+<!--        </div>-->
+<!--        <div class="header_item headerIcon">-->
+<!--            <button type="submit"><i class="fa-solid fa-user" style="color: #ffffff;"></i></button>-->
+<!--        </div>-->
+<!--        <div class="header_item headerIcon">-->
+<!--            <button type="submit"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<main>
+    <nav class="sideBar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'main/img/ice.png' %}" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">EnergoProf</span>
+                    <span class="professions">engineer</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                        <i class='bx bx-search icon'></i>
+                        <input type="text" placeholder="Поиск...">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home icon'></i>
+                            <span class="text nav-text">Главная</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-task icon'></i>
+                            <span class="text nav-text">Задачи</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-user-detail icon'></i>
+                            <span class="text nav-text">Сотрудники</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-file icon'></i>
+                            <span class="text nav-text">Документы</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon'></i>
+                            <span class="text nav-text">Данные</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <ul class="menu-links">
+                    <li class="exit">
+                        <a href="#">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text">Выйти</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block work %}
+    {% endblock %}
+</main>
+
+<script src="{% static 'main/js/script.js' %}"></script>
+<script src="{% static 'main/js/login_script.js' %}"></script>
+
+</body>
+</html>

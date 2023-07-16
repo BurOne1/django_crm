@@ -1,0 +1,45 @@
+{% extends 'main/layout.html'%}
+
+
+{% block work1 %}
+<section class="home">
+    <div class="text">Домашняя страница</div>
+    <div class="mini_body">
+        <div class="container">
+            <div class="form">
+                <div class="form login">
+                    <span class="title_form">Вход</span>
+                    <form action="#">
+                        <ul>
+                            <li class="input-field pole">
+                                <i class='bx bx-envelope icon'></i>
+                                <input type="email" placeholder="Введи свой логин" name="email" required>
+                            </li>
+                            <li class="input-field pole">
+                                <i class='bx bx-lock-alt icon'></i>
+                                <input type="password" placeholder="Введи свой пароль" name="password" required>
+                            </li>
+                        </ul>
+                        <div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="logCheck">
+                                <label for="logCheck" class="text_log">Запомнить меня</label>
+                            </div>
+                            <a href="#" class="text_log">Забыли пароль?</a>
+                        </div>
+                        <li class="input-field button">
+                            <input type="button" value="Войти">
+                        </li>
+                    </form>
+                    <div class="login-singup">
+                        <a href="#" class="text_log singup-text">Регистрация</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+

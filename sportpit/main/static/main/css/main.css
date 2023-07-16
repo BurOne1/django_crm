@@ -1,0 +1,396 @@
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+   font-family: 'Poppins', sans-serif;
+   margin: 0;
+   padding: 0;
+
+}
+/* Общее */
+body{
+   height: 100vh;
+   background: #E4E9F7;
+}
+a {
+   text-decoration: none;
+   color: #fff;
+}
+/* ЗАГОЛОВОК */
+/* ЗАГОЛОВОК */
+/* ЗАГОЛОВОК */
+/*header {
+   display: flex;
+   justify-content: space-between;
+   background: #255b4a;
+   padding: 10px;
+   color: #fff;
+}
+
+.header_section {
+   display: flex;
+   align-item: center;
+}
+
+.header_item {
+   padding: 10px 30px;
+   font-size: 24px;
+   margin-left: 5px;
+   transition: all .3s ease;
+   cursor: pointer;
+}
+
+.header_item:hover {
+   transform: scale(1.05);
+}*/
+
+/* Боковая панель */
+/* Боковая панель */
+/* Боковая панель */
+
+
+/* 3 */
+
+.sideBar .text{
+   font-size: 16px;
+   font-weight: 500;
+   color: #808080;
+   transition: all .3s ease;
+   white-space: nowrap;
+   opacity: 1;
+}
+
+.sideBar.close .text{
+   opacity: 0;
+}
+
+.sideBar .image{
+   min-weight: 60px;
+   display: flex;
+   align-items: center;
+
+}
+/* 3 */
+.sideBar{
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 250px;
+   padding: 10px 14px;
+   background: #FFF;
+   transition: all .5s ease;
+   z-index: 100;
+}
+
+.sideBar.close{
+   width: 60px;
+}
+
+.sideBar li{
+   height: 50px;
+   margin-top: 10px;
+   list-style: none;
+   display: flex;
+   align-items: center;
+}
+
+.sideBar .menu {
+   margin-top: 35px;
+}
+
+.sideBar header {
+   position: relative;
+}
+
+.sideBar li .icon {
+   min-width: 60px;
+   font-size: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.sideBar li .icon,
+.sideBar li .text{
+   color: #707070;
+   transition: all .3s ease;
+}
+
+.sideBar .image-text img{
+  width: 40px;
+  border-radius: 6px;
+}
+
+
+main {
+   display: flex;
+}
+
+.sideBar header .image-text{
+   display: flex;
+   align-items: center;
+}
+
+header .image-text .header-text {
+   padding-left: 10px;
+   display: flex;
+   flex-direction: column;
+}
+
+.header-text .name {
+   font-weight: 600;
+}
+
+.header-text .professions {
+   margin-top: -2px;
+}
+
+.sideBar header .toggle {
+   position: absolute;
+   top: 50%;
+   right: -30px;
+   transform: translateY(-50%) rotate(180deg);
+   height: 30px;
+   width: 30px;
+   background: #ae59ff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   color: #FFF;
+   font-size: 26px;
+   transition: all .7s ease;
+}
+
+.sideBar.close header .toggle{
+   transform: translateY(-50%);
+}
+
+.sideBar .search-box {
+   background: #f0e0ff;
+   border-radius: 6px;
+}
+
+.search-box input {
+   height: 100%;
+   width: 100%;
+   background: #f0e0ff;
+   outline: none;
+   border: none;
+   border-radius: 6px;
+   font-size: 16px;
+   font-weight: 500;
+}
+
+.sideBar li a{
+   width: 100%;
+   height: 100%;
+   text-decoration: none;
+   display: flex;
+   align-items: center;
+   border-radius: 6px;
+   transition: all .3s ease;
+}
+
+.sideBar ul a:hover {
+   background: #ae59ff;
+}
+
+.sideBar ul a:hover .icon,
+.sideBar ul a:hover .text {
+   color: #FFF;
+}
+
+
+.sideBar .menu-bar {
+   height: calc(100% - 70px);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.home {
+   position: relative;
+   height: 100vh;
+   left: 278px;
+   width: calc(100% - 278px);
+   transition: all .5s ease;
+   background: #E4E9F7;
+
+}
+
+.home .text{
+   font-size: 30px;
+   font-weight: 500;
+   color: #707070;
+   padding: 8px 40px;
+}
+
+.sideBar.close ~ .home{
+   left: 88px;
+   width: calc(100% - 88px);
+}
+/* work */
+
+
+.home .mini_body {
+   height: calc(100% - 70px);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.container {
+   position: relative;
+   max-width: 430px;
+   background: #FFF;
+   border-radius: 10px;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+   overflow: hidden;
+   margin: 0 20px;
+}
+
+.container .forms{
+   display: flex;
+   align-items: center;
+   height: 380px;
+   width: 200%;
+   transition: height .3s ease;
+}
+
+.container.active .forms{
+   height: 500px;
+}
+
+.container.active .login{
+   margin-left: -50%;
+   opacity: 0;
+   transition: margin-left .2s ease opacity .2s ease;
+}
+
+.container .singup{
+   opacity: 0;
+   transition: opacity .1s ease;
+}
+
+.container.active .singup{
+   opacity: 1;
+   transition: opacity .2s ease;
+}
+
+.container .form {
+   padding: 35px;
+   width: calc(50% - 70px);
+   transition: margin-left .3s ease;
+}
+
+.form .title_form {
+   position: relative;
+   font-size: 27px;
+   font-weight: 500;
+   color: #707070;
+}
+
+.form .login{
+   display: flex;
+   flex-direction: column;
+}
+
+.form .singup{
+   display: flex;
+   flex-direction: column;
+}
+
+.form .input-field {
+   background: #f0e0ff;
+   border-radius: 6px;
+   border: 1px solid #e5caff;
+}
+
+
+.pole input{
+   height: 100%;
+   width: 100%;
+   background: #f0e0ff;
+   outline: none;
+   border: none;
+   border-radius: 6px;
+   font-size: 16px;
+   font-weight: 500;
+}
+
+.button input{
+   height: 100%;
+   width: 100%;
+   background: #f0e0ff;
+   outline: none;
+   border: 1px solid #ae59ff;
+   border-radius: 6px;
+   color: #707070;
+   font-size: 18px;
+   font-weight: 500;
+   transition: all .3s ease;
+   letter-spacing: 0.5px;
+   cursor: pointer;
+}
+
+.button input:hover{
+   background: #ae59ff;
+   color: #FFF;
+}
+
+
+.form li {
+   display: flex;
+   height: 50px;
+   margin-top: 10px;
+   list-style: none;
+   align-items: center;
+}
+
+.form li .icon {
+   min-width: 60px;
+   font-size: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.form li .icon{
+   color: #707070;
+   transition: all .3s ease;
+}
+
+.form .checkbox-text{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+.checkbox-text .checkbox-content{
+   display: flex;
+   align-items: center;
+}
+
+.checkbox-content input{
+   margin: 0 8px 0px 4px;
+   accent-color: #ae59ff;
+}
+
+.form .text_log{
+   color: #ae59ff;
+   font-size: 16px;
+}
+
+.form a{
+  color: #ae59ff;
+}
+
+.form a:hover{
+  text-decoration: underline;
+}
+
+.form .login-singup{
+   margin-top: 10px;
+}
