@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,6 +34,7 @@
 <!--    </div>-->
 <!--</header>-->
 <main>
+    {% if user.is_authenticated %}
     <nav class="sideBar close">
         <header>
             <div class="image-text">
@@ -42,8 +43,8 @@
                 </span>
 
                 <div class="text header-text">
-                    <span class="name">EnergoProf</span>
-                    <span class="professions">engineer</span>
+                    <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
+                    <span class="professions">{{ user.username }}</span>
                 </div>
             </div>
 
@@ -52,26 +53,32 @@
         <div class="menu-bar">
             <div class="menu">
                 <li class="search-box">
-                        <i class='bx bx-search icon'></i>
-                        <input type="text" placeholder="Поиск...">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Поиск...">
                 </li>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{% url 'main' %}">
                             <i class='bx bx-home icon'></i>
                             <span class="text nav-text">Главная</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{% url 'work' %}">
                             <i class='bx bx-task icon'></i>
                             <span class="text nav-text">Задачи</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{% url 'user' %}">
                             <i class='bx bxs-user-detail icon'></i>
                             <span class="text nav-text">Сотрудники</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'client' %}">
+                            <i class='bx bxs-book-heart icon'></i>
+                            <span class="text nav-text">Наши клиенты</span>
                         </a>
                     </li>
                     <li class="nav-link">
@@ -92,7 +99,7 @@
             <div class="bottom-content">
                 <ul class="menu-links">
                     <li class="exit">
-                        <a href="#">
+                        <a href="{% url 'logout_user' %}">
                             <i class='bx bx-log-out icon'></i>
                             <span class="text nav-text">Выйти</span>
                         </a>
@@ -104,7 +111,102 @@
 
     {% block work %}
     {% endblock %}
+
+    {% else %}
+    <div class="center_auth">
+        <div class="mini_body">
+            <div class="container">
+                <div class="forms">
+                    <div class="form login">
+                        <span class="title_form">Вход</span>
+                        <form method="post" action="{% url 'main' %}">
+                            {% csrf_token %}
+                            <ul>
+                                <li class="input-field pole">
+                                    <i class='bx bx-envelope icon'></i>
+                                    <input type="text" placeholder="Введи свой логин" name="username" required>
+                                </li>
+                                <li class="input-field pole">
+                                    <i class='bx bx-lock-alt icon'></i>
+                                    <input type="password" class="password" placeholder="Введи свой пароль"
+                                           name="password" required>
+                                </li>
+                            </ul>
+                            <div class="checkbox-text">
+                                <div class="checkbox-content">
+                                    <input type="checkbox" id="logCheck">
+                                    <label for="logCheck" class="text_log">Запомнить меня</label>
+                                </div>
+                                <a href="#" class="text_log">Забыли пароль?</a>
+                            </div>
+                            <li class="input-field button">
+                                <input type="submit" value="Войти">
+                            </li>
+                        </form>
+                        <div class="login-singup">
+                            <a href="#" class="text_log singup-link">Регистрация</a>
+                        </div>
+                    </div>
+
+                    <!-- Register -->
+                    <div class="form singup">
+                        <span class="title_form">Регистрация</span>
+                        <form method="post" action="{% url 'register' %}">
+                            {% csrf_token %}
+                            <ul>
+                                <li class="input-field pole">
+                                    <i class='bx bx-user icon'></i>
+                                    <input type="text" placeholder="Имя" name="first_name" required>
+                                </li>
+                                <li class="input-field pole">
+                                    <i class='bx bx-user icon'></i>
+                                    <input type="text" placeholder="Фамилия" name="last_name" required>
+                                </li>
+                                <li class="input-field pole">
+                                    <i class='bx bx-user icon'></i>
+                                    <input type="tel" id="phone" placeholder="Номер телефона" name="username" required>
+                                </li>
+                                <li class="input-field pole">
+                                    <i class='bx bx-envelope icon'></i>
+                                    <input type="email" placeholder="Введи свой email" name="email" required>
+                                </li>
+                                <li class="input-field pole">
+                                    <i class='bx bx-lock-alt icon'></i>
+                                    <input type="password" class="password" placeholder="Придумай пароль"
+                                           name="password" required>
+                                </li>
+                                <li class="input-field pole">
+                                    <i class='bx bx-lock-alt icon'></i>
+                                    <input type="password" class="password" placeholder="Повтори пароль"
+                                           name="confirm_password" required>
+                                </li>
+                            </ul>
+                            <div class="checkbox-text">
+                                <div class="checkbox-content">
+                                    <input type="checkbox" id="termCon">
+                                    <label for="termCon" class="text_log">Я принимаю все условия</label>
+                                </div>
+                                <a href="#" class="text_log">Ознакомиться</a>
+                            </div>
+                            <li class="input-field button">
+                                <input type="submit" value="Зарегистрироваться">
+                            </li>
+                        </form>
+                        <div class="login-singup">
+                            <a href="#" class="text_log login-link">Войти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
 </main>
+
 
 <script src="{% static 'main/js/script.js' %}"></script>
 <script src="{% static 'main/js/login_script.js' %}"></script>

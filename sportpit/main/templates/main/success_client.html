@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main/layout.html'%}
+
+{% block titleblock %}Клиент добавлен{% endblock %}
+
+{% block work %}
+<!-- Модальное окно -->
+<div class="myModal" style="display: none;">
+    <div class="modal-content"></div>
+    <span class="close">&times;</span>
+</div>
+
+
+<section class="home">
+    <div class="upper_text">
+        <b3>Клиент добавлен</b3>
+        <b3>OneCRM</b3>
+    </div>
+    <div class="card_menu">
+        <div class="upper_table_user">
+            <button class="btn">Добавить</button>
+            <div class="search_table">
+                <input placeholder="Найти сотрудника" class="input" type="text">
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+
+
+{% endblock %}

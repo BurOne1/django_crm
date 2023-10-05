@@ -1,10 +1,153 @@
 {% extends 'main/layout.html'%}
 
-{% block titleblock %}Домашняя страница{% endblock %}
+{% block titleblock %}Рабочая страница{% endblock %}
 
-{% block work3 %}
+{% block work %}
+
+<!-- Модальное окно -->
+<div id="clientModal" class="modal">
+    <div class="modal-content-client">
+        <div class="form clientModelWindow">
+            <div class="title_row_client_form">
+                <span class="title_form">Новая заявка</span>
+                <i class='bx bx-x icon close-button'></i>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="column">
+                    <!-- Первая колонка (левая) -->
+                    <label for="select3">Тип заявки</label>
+                    <input list="select3" id="select3Input" name="select1Input" placeholder="Выберите или введите">
+                    <datalist id="select3">
+                        <option value="Опция 1">
+                        <option value="Опция 2">
+                        <option value="Опция 3">
+                    </datalist>
+                    <label for="textarea">Описание</label>
+                    <textarea id="textarea" name="textarea" placeholder="Введите текст"></textarea>
+
+                    <label for="file">Загрузка файлов</label>
+                    <input type="file" id="file" name="file" multiple>
+                </div>
+                <div class="column">
+                    <!-- Вторая колонка (правая) -->
+                    <label for="select1">Клиент</label>
+                    <input list="select1" id="select1Input" name="select1Input" placeholder="Выберите или введите">
+                    <datalist id="select1">
+                        {% for client in clients %}
+                        <option value="{{ client.first_name }} {{ client.last_name }}">{{ client.organization_name }}
+                        </option>
+                        {% endfor %}
+                    </datalist>
+
+                    <label for="select2">Договор</label>
+                    <input list="select2" id="select2Input" name="select2Input" placeholder="Выберите или введите">
+                    <datalist id="select2">
+                        <option value="Опция 1">
+                        <option value="Опция 2">
+                        <option value="Опция 3">
+                    </datalist>
+
+                    <label for="select4">Объект обслуживания</label>
+                    <input list="select4" id="select4Input" name="select2Input" placeholder="Выберите или введите">
+                    <datalist id="select4">
+                        <option value="Опция 1">
+                        <option value="Опция 2">
+                        <option value="Опция 3">
+                    </datalist>
+
+                    <label for="select5">Оборудование</label>
+                    <input list="select5" id="select5Input" name="select2Input" placeholder="Выберите или введите">
+                    <datalist id="select5">
+                        <option value="Опция 1">
+                        <option value="Опция 2">
+                        <option value="Опция 3">
+                    </datalist>
+
+                    <label for="select6">Ответственный сотрудник</label>
+                    <input list="select6" id="select6Input" name="select2Input" placeholder="Выберите или введите">
+                    <datalist id="select6">
+                        {% for user in users %}
+                        <option value="{{ user.first_name }} {{ user.last_name }}">
+                        {% endfor %}
+                    </datalist>
+
+                </div>
+
+            </form>
+            <div class="create-note">
+                <button class="create-button">Создать</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <section class="home">
-    <div class="text">Домашняя страница</div>
+    <div class="upper_text">
+        <b3>Страница Заявок</b3>
+        <b3>OneCRM</b3>
+    </div>
+    <div class="card_menu">
+        <div class="upper_table_user">
+            <button class="btn" id="openModalBtn">Добавить</button>
+            <div class="search_table">
+                <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Телефон</th>
+                <th>Статус</th>
+            </tr>
+            <tr>
+                <td>Иван</td>
+                <td>Иванов</td>
+                <td>ivan@example.com</td>
+                <td>+123456789</td>
+                <td>Админ</td>
+
+            </tr>
+            <tr>
+                <td>Петр</td>
+                <td>Петров</td>
+                <td>petr@example.com</td>
+                <td>+987654321</td>
+                <td>Пользователь</td>
+            </tr>
+            <tr>
+                <td>Кокос</td>
+                <td>Кокосов</td>
+                <td>koko@example.com</td>
+                <td>+987654321</td>
+                <td>Пользователь</td>
+            </tr>
+            <!-- Добавьте больше строк пользователей по желанию -->
+        </table>
+    </div>
+
+
 </section>
+
+<script>
+    // Открытие модального окна
+document.getElementById('openModalBtn').addEventListener('click', function() {
+    document.getElementById('clientModal').style.display = 'block';
+});
+
+// Закрытие модального окна при нажатии кнопки "Закрыть" на форме
+document.querySelectorAll('.close-button').forEach(function(element) {
+    element.addEventListener('click', function() {
+        document.getElementById('clientModal').style.display = 'none';
+    });
+});
+
+
+
+
+</script>
 {% endblock %}
 

@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main/layout.html'%}
+
+{% block titleblock %}Страница сотрудника{% endblock %}
+
+{% block work %}
+
+<section class="home">
+    <div class="upper_text">
+        <b3>Сотрудник: {{ user.first_name }} {{ user.last_name }}</b3>
+        <b3>OneCRM</b3>
+    </div>
+    <div class="card_menu">
+        <h1>User Details</h1>
+        <p><strong>Имя:</strong> {{ user.first_name }}</p>
+        <p><strong>Фамилия:</strong> {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Телефон:</strong> {{ user.username }}</p>
+    </div>
+
+</section>
+
+
+{% endblock %}

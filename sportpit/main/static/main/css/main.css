@@ -124,6 +124,7 @@ a {
 
 main {
    display: flex;
+
 }
 
 .sideBar header .image-text{
@@ -211,16 +212,47 @@ header .image-text .header-text {
 
 .home {
    position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: top;
    height: 100vh;
    left: 278px;
    width: calc(100% - 278px);
    transition: all .5s ease;
    background: #E4E9F7;
+}
+
+.center_auth {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: top;
+   height: 100vh;
+   width: 100vw;
+   transition: all .5s ease;
+   background: #E4E9F7;
+}
+
+.home .card_menu {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: top;
+   background: #FFF;
+   height: calc(100% - 100px);
+   width: calc(100% - 88px);
+   border-radius: 10px;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 
 }
 
-.home .text{
-   font-size: 30px;
+.home .upper_text{
+   display: flex;
+   justify-content: space-between;
+   width: calc(100% - 196px);
+   font-size: 28px;
    font-weight: 500;
    color: #707070;
    padding: 8px 40px;
@@ -233,7 +265,7 @@ header .image-text .header-text {
 /* work */
 
 
-.home .mini_body {
+.mini_body {
    height: calc(100% - 70px);
    display: flex;
    align-items: center;
@@ -259,7 +291,7 @@ header .image-text .header-text {
 }
 
 .container.active .forms{
-   height: 500px;
+   height: 600px;
 }
 
 .container.active .login{
@@ -306,6 +338,8 @@ header .image-text .header-text {
    border-radius: 6px;
    border: 1px solid #e5caff;
 }
+
+
 
 
 .pole input{
@@ -391,6 +425,312 @@ header .image-text .header-text {
   text-decoration: underline;
 }
 
+
 .form .login-singup{
    margin-top: 10px;
+}
+
+.upper_table_user {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   margin: 10px;
+}
+
+table {
+   border-collapse: collapse;
+   width: 100%;
+   font-family: Arial, sans-serif;
+}
+
+.user-row a {
+   color: #000000;
+}
+
+.user-row a:hover {
+   color: #00ff00;
+}
+
+
+th,td {
+   border: 1px solid #dddddd;
+   padding: 10px 24px;
+   text-align: left;
+}
+
+th {
+   background-color: #f2f2f2;
+   font-weight: bold;
+}
+
+tr:nth-child(even) {
+   background-color: #f9f9f9;
+}
+
+tr:hover {
+   background-color: #f5f5f5;
+}
+
+th:nth-child(1), td:nth-child(1) {
+            width: 15%;
+}
+
+th:nth-child(2), td:nth-child(2) {
+            width: 15%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+            width: 35%;
+}
+
+th:nth-child(4), td:nth-child(4) {
+            width: 35%;
+}
+
+.custom-table th:nth-child(1),
+.custom-table td:nth-child(1) {
+            width: 15%;
+}
+
+.custom-table th:nth-child(2),
+.custom-table td:nth-child(2) {
+            width: 15%;
+}
+
+.custom-table th:nth-child(3),
+.custom-table td:nth-child(3) {
+            width: 15%;
+}
+
+.custom-table th:nth-child(4),
+.custom-table td:nth-child(4) {
+            width: 15%;
+}
+
+.custom-table th:nth-child(5),
+.custom-table td:nth-child(5) {
+            width: 15%;
+}
+
+.custom-table th:nth-child(6),
+.custom-table td:nth-child(6) {
+            width: 25%;
+}
+
+.btn {
+  background-color: #f0e0ff;
+  color: #707070;
+  border: none;
+  border-radius: 6px;
+  width: 100px;
+  height: 100%;
+  transition: .3s;
+  font-size: 16px;
+  margin-right: 200px;
+}
+
+.btn:hover {
+  background-color: #ae59ff;
+  color: #FFF;
+}
+
+.search_table .input {
+  width: 320px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+  color: #707070;
+  padding: 10px 5px 10px 10px;
+  border-radius: 6px;
+  background-color: #f0e0ff;
+}
+
+.search_table .input::placeholder {
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.search_table .input:focus::placeholder {
+  color: #999;
+}
+
+/*  */
+/* Форма заполнения заявки о клиенте */
+/*  */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+.modal-content-client {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 720px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content-client-create {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 720px;
+    height: 650px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form .clientModelWindow{
+   display: flex;
+   flex-direction: column;
+}
+
+.title_row_client_form{
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+}
+
+.title_row_client_form i{
+   width: 30px;
+   height: 30px;
+   font-size: 26px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #707070;
+   transition: all .35s ease;
+}
+
+.title_row_client_form i:hover{
+   font-size: 28px;
+}
+
+.modal-content-client-create form{
+   display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-right: 20px;
+}
+
+.modal-content-client form{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-right: 20px;
+}
+
+
+.column {
+    width: 46%; /* Ширина столбца, учитывая отступы */
+}
+
+/* Стилизация подписей */
+label {
+    display: block;
+    margin-top: 5px;
+    color: #707070; /* Цвет текста подписей */
+}
+
+/* Стилизация текстового поля в несколько строк */
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 60px;
+    max-height: 180px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f0f0f0; /* Цвет фона поля ввода */
+}
+
+.textareaClientForm {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 60px;
+    max-height: 105px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #f0f0f0; /* Цвет фона поля ввода */
+}
+
+/* Стилизация выпадающих списков */
+input[list] {
+    width: 100%;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+}
+
+.writeInput {
+    width: 100%;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Стилизация поля загрузки файлов */
+input[type="file"] {
+    width: 100%;
+    padding: 5px;
+    background-color: #f0f0f0; /* Цвет фона поля загрузки файлов */
+}
+
+/* Добавление цвета при наведении на элементы формы */
+textarea:hover, select:hover, input[type="file"]:hover, input:hover {
+    border-color: #ae59ff; /* Цвет рамки при наведении */
+}
+
+.create-button{
+   background-color: #baff78;
+   color: #707070;
+   border: none;
+   border-radius: 6px;
+   width: 90px;
+   height: 45px;
+   transition: .3s;
+   font-size: 16px;
+   float: right;
+   margin-right: 20px;
+   margin-bottom: 10px;
+   margin-top: 10px;
+}
+
+.create-button:hover{
+   background-color: #a0ff47;
 }

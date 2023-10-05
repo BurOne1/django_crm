@@ -1,10 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main/layout.html'%}
+
+{% block titleblock %}Страница клиентов{% endblock %}
+
+{% block work %}
+<!-- Модальное окно -->
+<div id="clientModal" class="modal">
+    <div class="modal-content-client-create">
+        <div class="form clientModelWindow">
+            <div class="title_row_client_form">
+                <span class="title_form">Новая заявка</span>
+                <i class='bx bx-x icon close-button'></i>
+            </div>
+            <form class="clientFormCreate" method="post" action="{% url 'create_client' %}">
+                {% csrf_token %}
+                <div class="column">
+                    <!-- Первая колонка (левая) -->
+                    <label for="first_name">Имя*</label>
+                    <input class="writeInput" id="first_name" name="first_name" placeholder="Введите имя">
+
+                    <label for="last_name">Фамилия*</label>
+                    <input class="writeInput" id="last_name" name="last_name" placeholder="Введите фамилию">
+
+                    <label for="middle_name">Отчество*</label>
+                    <input class="writeInput" id="middle_name" name="middle_name" placeholder="Введите отчество">
+
+                    <label for="contact_number">Контактный номер*</label>
+                    <input class="writeInput" id="contact_number" name="contact_number" placeholder="Номер телефона">
+
+                    <label for="email">Электронная почта*</label>
+                    <input class="writeInput" id="email" name="email" placeholder="Email">
+
+                    <label for="integer_field_1">Серия паспорта*</label>
+                    <input class="writeInput" id="integer_field_1" name="integer_field_1" placeholder="Введите серию паспорта">
+
+                    <label for="integer_field_2">Номер паспорта*</label>
+                    <input class="writeInput" id="integer_field_2" name="integer_field_2" placeholder="Введите номер паспорта">
+
+                </div>
+                <div class="column">
+                    <!-- Вторая колонка (правая) -->
+                    <label for="organization_name">Название организации</label>
+                    <input class="writeInput" id="organization_name" name="organization_name" placeholder="Введите название">
+
+                    <label for="inn">ИНН организации*</label>
+                    <input class="writeInput" id="inn" name="inn" placeholder="Введите ИНН">
+
+                    <label for="bank_account">Расчётный счёт*</label>
+                    <input class="writeInput" id="bank_account" name="bank_account"
+                           placeholder="Номер расчётного счёта">
+
+                    <label for="organization_address">Адрес предприятия</label>
+                    <input class="writeInput" id="organization_address" name="organization_address" placeholder="Адрес предприятия">
+
+                    <label for="telegram_nickname">Никнейм Telegram или Telegram id</label>
+                    <input class="writeInput" id="telegram_nickname" name="telegram_nickname" placeholder="Выберите или введите">
+
+                    <label for="description">Описание клиента</label>
+                    <textarea class="textareaClientForm" id="description" name="description"
+                              placeholder="Введите текст"></textarea>
+                    <div class="create-note">
+                        <button class="create-button" type="submit">Создать</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+<section class="home">
+    <div class="upper_text">
+        <b3>Наши клиенты</b3>
+        <b3>OneCRM</b3>
+    </div>
+    <div class="card_menu">
+        <div class="upper_table_user">
+            <button class="btn" id="openClientFormClientBtn">Добавить</button>
+            <div class="search_table">
+                <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+            </div>
+        </div>
+        <table class="custom-table">
+            <tr>
+                <th>ФИО</th>
+                <th>Email</th>
+                <th>Телефон</th>
+                <th>Название организации</th>
+                <th>ИНН организации</th>
+                <th>Расчётный счёт</th>
+            </tr>
+            {% for client in clients %}
+            <tr class="user-row" >
+                <td class="user-cell">{{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</td>
+                <td class="user-cell">{{ client.email }}</td>
+                <td class="user-cell">{{ client.contact_number }}</td>
+                <td class="user-cell">{{ client.organization_name }}</td>
+                <td class="user-cell">{{ client.inn }}</td>
+                <td class="user-cell">{{ client.bank_account }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+</section>
+
+<script>
+    // Открытие модального окна
+document.getElementById('openClientFormClientBtn').addEventListener('click', function() {
+    document.getElementById('clientModal').style.display = 'block';
+});
+
+// Закрытие модального окна при нажатии кнопки "Закрыть" на форме
+document.querySelectorAll('.close-button').forEach(function(element) {
+    element.addEventListener('click', function() {
+        document.getElementById('clientModal').style.display = 'none';
+    });
+});
+
+
+
+</script>
+
+{% endblock %}

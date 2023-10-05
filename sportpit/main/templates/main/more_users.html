@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main/layout.html'%}
+
+{% block titleblock %}Страница сотрудников{% endblock %}
+
+{% block work %}
+<!-- Модальное окно -->
+<div class="myModal" style="display: none;">
+    <div class="modal-content"></div>
+    <span class="close">&times;</span>
+</div>
+
+
+<section class="home">
+    <div class="upper_text">
+        <b3>Страница сотрудников</b3>
+        <b3>OneCRM</b3>
+    </div>
+    <div class="card_menu">
+        <div class="upper_table_user">
+            <button class="btn">Добавить</button>
+            <div class="search_table">
+                <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Телефон</th>
+            </tr>
+            {% for user in users %}
+            <tr class="user-row" >
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.first_name }}</a></td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.last_name }}</a></td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.email }}</a></td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.username }}</a></td>
+            </tr>
+            {% endfor %}
+            <!-- Добавьте больше строк пользователей по желанию -->
+        </table>
+    </div>
+
+
+</section>
+<script>
+    // Находим все ячейки с классом "user-cell"
+    const userCells = document.querySelectorAll('.user-cell');
+
+    // Добавляем обработчик события click для каждой ячейки
+    userCells.forEach(cell => {
+        cell.addEventListener('click', () => {
+            // Находим ссылку внутри ячейки и переходим по ней
+            const link = cell.querySelector('a');
+            if (link) {
+                window.location.href = link.href;
+            }
+        });
+    });
+</script>
+
+{% endblock %}
