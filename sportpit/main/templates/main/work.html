@@ -51,17 +51,18 @@
                     <label for="select4">Объект обслуживания</label>
                     <input list="select4" id="select4Input" name="select2Input" placeholder="Выберите или введите">
                     <datalist id="select4">
-                        <option value="Опция 1">
-                        <option value="Опция 2">
-                        <option value="Опция 3">
+                        <option value="КНС">
+                        <option value="ДНС">
+                        <option value="ГВС">
+                        <option value="XВС">
                     </datalist>
 
                     <label for="select5">Оборудование</label>
                     <input list="select5" id="select5Input" name="select2Input" placeholder="Выберите или введите">
                     <datalist id="select5">
-                        <option value="Опция 1">
-                        <option value="Опция 2">
-                        <option value="Опция 3">
+                        <option value="Насосы">
+                        <option value="Шкафы управления">
+                        <option value="Насосы и шкафы управления">
                     </datalist>
 
                     <label for="select6">Ответственный сотрудник</label>
@@ -69,7 +70,7 @@
                     <datalist id="select6">
                         {% for user in users %}
                         <option value="{{ user.first_name }} {{ user.last_name }}">
-                        {% endfor %}
+                            {% endfor %}
                     </datalist>
 
                 </div>
@@ -89,44 +90,179 @@
         <b3>OneCRM</b3>
     </div>
     <div class="card_menu">
-        <div class="upper_table_user">
-            <button class="btn" id="openModalBtn">Добавить</button>
-            <div class="search_table">
-                <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
-            </div>
-        </div>
-        <table>
-            <tr>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Email</th>
-                <th>Телефон</th>
-                <th>Статус</th>
-            </tr>
-            <tr>
-                <td>Иван</td>
-                <td>Иванов</td>
-                <td>ivan@example.com</td>
-                <td>+123456789</td>
-                <td>Админ</td>
 
-            </tr>
-            <tr>
-                <td>Петр</td>
-                <td>Петров</td>
-                <td>petr@example.com</td>
-                <td>+987654321</td>
-                <td>Пользователь</td>
-            </tr>
-            <tr>
-                <td>Кокос</td>
-                <td>Кокосов</td>
-                <td>koko@example.com</td>
-                <td>+987654321</td>
-                <td>Пользователь</td>
-            </tr>
-            <!-- Добавьте больше строк пользователей по желанию -->
-        </table>
+        <div class="table-container-work">
+            <div class="upper_table_user">
+                <button class="btn" id="openModalBtn">Добавить</button>
+                <div class="search_table">
+                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+                </div>
+                <b3>Страница 1</b3>
+                <div id="pagination">
+                    <button id="prev-page">Предыдущая</button>
+                    <button id="next-page">Следующая</button>
+                    <div id="page-buttons">
+                        <!-- Кнопки для каждой страницы будут добавлены здесь -->
+                    </div>
+                </div>
+            </div>
+            <div class="table-scroll-work">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Заголовок 1</th>
+                        <th>Заголовок 2</th>
+                        <th>Заголовок 3</th>
+                        <th>Заголовок 4</th>
+                        <!-- Другие заголовки -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 5</td>
+                        <td>Содержимое 6</td>
+                        <td>Содержимое 7</td>
+                        <td>Содержимое 8</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 5</td>
+                        <td>Содержимое 6</td>
+                        <td>Содержимое 7</td>
+                        <td>Содержимое 8</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 5</td>
+                        <td>Содержимое 6</td>
+                        <td>Содержимое 7</td>
+                        <td>Содержимое 8</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 5</td>
+                        <td>Содержимое 6</td>
+                        <td>Содержимое 7</td>
+                        <td>Содержимое 8</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 4</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
 
 
@@ -144,6 +280,8 @@ document.querySelectorAll('.close-button').forEach(function(element) {
         document.getElementById('clientModal').style.display = 'none';
     });
 });
+
+
 
 
 

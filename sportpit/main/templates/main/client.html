@@ -8,7 +8,7 @@
     <div class="modal-content-client-create">
         <div class="form clientModelWindow">
             <div class="title_row_client_form">
-                <span class="title_form">Новая заявка</span>
+                <span class="title_form">Добавление клиента</span>
                 <i class='bx bx-x icon close-button'></i>
             </div>
             <form class="clientFormCreate" method="post" action="{% url 'create_client' %}">
@@ -31,16 +31,19 @@
                     <input class="writeInput" id="email" name="email" placeholder="Email">
 
                     <label for="integer_field_1">Серия паспорта*</label>
-                    <input class="writeInput" id="integer_field_1" name="integer_field_1" placeholder="Введите серию паспорта">
+                    <input class="writeInput" id="integer_field_1" name="integer_field_1"
+                           placeholder="Введите серию паспорта">
 
                     <label for="integer_field_2">Номер паспорта*</label>
-                    <input class="writeInput" id="integer_field_2" name="integer_field_2" placeholder="Введите номер паспорта">
+                    <input class="writeInput" id="integer_field_2" name="integer_field_2"
+                           placeholder="Введите номер паспорта">
 
                 </div>
                 <div class="column">
                     <!-- Вторая колонка (правая) -->
                     <label for="organization_name">Название организации</label>
-                    <input class="writeInput" id="organization_name" name="organization_name" placeholder="Введите название">
+                    <input class="writeInput" id="organization_name" name="organization_name"
+                           placeholder="Введите название">
 
                     <label for="inn">ИНН организации*</label>
                     <input class="writeInput" id="inn" name="inn" placeholder="Введите ИНН">
@@ -50,10 +53,12 @@
                            placeholder="Номер расчётного счёта">
 
                     <label for="organization_address">Адрес предприятия</label>
-                    <input class="writeInput" id="organization_address" name="organization_address" placeholder="Адрес предприятия">
+                    <input class="writeInput" id="organization_address" name="organization_address"
+                           placeholder="Адрес предприятия">
 
                     <label for="telegram_nickname">Никнейм Telegram или Telegram id</label>
-                    <input class="writeInput" id="telegram_nickname" name="telegram_nickname" placeholder="Выберите или введите">
+                    <input class="writeInput" id="telegram_nickname" name="telegram_nickname"
+                           placeholder="Выберите или введите">
 
                     <label for="description">Описание клиента</label>
                     <textarea class="textareaClientForm" id="description" name="description"
@@ -87,18 +92,18 @@
                 <th>ФИО</th>
                 <th>Email</th>
                 <th>Телефон</th>
-                <th>Название организации</th>
+                <th>Организация</th>
                 <th>ИНН организации</th>
                 <th>Расчётный счёт</th>
             </tr>
             {% for client in clients %}
-            <tr class="user-row" >
-                <td class="user-cell">{{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</td>
-                <td class="user-cell">{{ client.email }}</td>
-                <td class="user-cell">{{ client.contact_number }}</td>
-                <td class="user-cell">{{ client.organization_name }}</td>
-                <td class="user-cell">{{ client.inn }}</td>
-                <td class="user-cell">{{ client.bank_account }}</td>
+            <tr class="user-row">
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</a></td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.email }}</a></td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.contact_number }}</a></td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.organization_name }}</a></td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.inn }}</a></td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.bank_account }}</a></td>
             </tr>
             {% endfor %}
         </table>
@@ -117,6 +122,20 @@ document.getElementById('openClientFormClientBtn').addEventListener('click', fun
 document.querySelectorAll('.close-button').forEach(function(element) {
     element.addEventListener('click', function() {
         document.getElementById('clientModal').style.display = 'none';
+    });
+});
+
+// Находим все ячейки с классом "user-cell"
+const userCells = document.querySelectorAll('.user-cell');
+
+// Добавляем обработчик события click для каждой ячейки
+userCells.forEach(cell => {
+    cell.addEventListener('click', () => {
+        // Находим ссылку внутри ячейки и переходим по ней
+        const link = cell.querySelector('a');
+        if (link) {
+            window.location.href = link.href;
+        }
     });
 });
 

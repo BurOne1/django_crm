@@ -8,6 +8,7 @@ from .models import Client  # Импортируйте модель данных
 
 # Create your views here.
 
+# Функция ВХОДА в систему
 def index(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -25,6 +26,7 @@ def index(request):
     return render(request, 'main/login_page.html')
 
 
+# Функция РЕГИСТРАЦИИ в системе
 def register(request):
     if request.method == 'POST':
         password1 = request.POST.get('password')
@@ -51,11 +53,14 @@ def register(request):
     return render(request, 'main/login_page.html')
 
 
+# Функция ВЫХОДА из системы
 def logout_user(request):
     logout(request)
     return redirect('main')
 
 
+# Функция для запуска страницы work.html
+# c передачей данных на эту страницу
 def work(request):
     clients = Client.objects.all()
     users = User.objects.all()
@@ -77,11 +82,25 @@ def user_list(request):
     return render(request, 'main/more_users.html', {'users': users})
 
 
+def docks_list(request):
+    return render(request, 'main/doks_list.html')
+
+
 def client_exists(request):
     users = User.objects.all()
     return render(request, 'main/client_exists.html', {'users': users})
 
 
+# Функция открытия страницы о клиенте
+def client_details(request, client_id):
+    # Получаем объект пользователя по client_id
+    client_d = get_object_or_404(Client, pk=client_id)
+
+    # Отправляем объект пользователя в шаблон
+    return render(request, 'main/client_details.html', {'client': client_d})
+
+
+# Функция открытия страницы о сотруднике
 def user_details(request, user_id):
     # Получаем объект пользователя по user_id
     user_d = get_object_or_404(User, pk=user_id)
@@ -90,6 +109,7 @@ def user_details(request, user_id):
     return render(request, 'main/user_details.html', {'user': user_d})
 
 
+# Функция создания клиента
 def create_client(request):
     if request.method == 'POST':
         # Обработка данных, отправленных POST-запросом

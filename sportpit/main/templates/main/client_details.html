@@ -1,22 +1,33 @@
 {% extends 'main/layout.html'%}
 
-{% block titleblock %}Страница сотрудника{% endblock %}
+{% block titleblock %}Страница о клиенте{% endblock %}
 
 {% block work %}
 
 <section class="home">
     <div class="upper_text">
-        <b3>Сотрудник: {{ user.first_name }} {{ user.last_name }}</b3>
+        <b3>Клиент: {{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</b3>
         <b3>OneCRM</b3>
     </div>
     <div class="card_menu">
-        <div class="user-details-data">
-            <div class="user-details-datatwo">
-                <h1>Сотрудник</h1>
-                <p><strong>ФИО:</strong> {{ client.first_name }} {{ user.last_name }} {{ client.middle_name }}</p>
-                <p><strong>Email:</strong> {{ user.email }}</p>
-                <p><strong>Телефон:</strong> {{ user.username }}</p>
-                <p><strong>Telegram:</strong> - </p>
+        <div class="client-details-data">
+            <div class="client-details-dataone">
+                <h1>Компания</h1>
+                <p><strong>Организация:</strong> {{ client.organization_name }}</p>
+                <p><strong>ИНН:</strong> {{ client.inn }}</p>
+                <p><strong>Расчётный счёт:</strong> {{ client.bank_account }}</p>
+                <p><strong>Адрес:</strong> {{ client.organization_address }}</p>
+            </div>
+            <div class="client-details-datatwo">
+                <h1>Контактное лицо</h1>
+                <p><strong>ФИО:</strong> {{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</p>
+                <p><strong>Email:</strong> {{ client.email }}</p>
+                <p><strong>Телефон:</strong> {{ client.contact_number }}</p>
+                <p><strong>Telegram:</strong> {{ client.telegram_nickname }}</p>
+            </div>
+            <div class="client-details-datathree">
+                <h1>Описание</h1>
+                <p><strong>Описание:</strong> {{ client.description }}</p>
             </div>
             <div class="client-details-datafour">
                 <button class="edit-button">Изменить</button>
@@ -28,7 +39,7 @@
         </div>
         <hr style="border-color: #707070; border-width: 1px; width: 100%;">
         <div class="upper_table_user">
-            <p>Клиенты</p>
+            <p>Договора</p>
         </div>
         <table>
             <tr>
@@ -65,6 +76,5 @@
     </div>
 
 </section>
-
 
 {% endblock %}

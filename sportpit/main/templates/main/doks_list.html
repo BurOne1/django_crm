@@ -1,0 +1,96 @@
+{% extends 'main/layout.html'%}
+
+{% block titleblock %}Шаблоны документов{% endblock %}
+
+{% block work %}
+<!-- Модальное окно -->
+<div id="clientModal" class="modal">
+    <div class="modal-content-docks-pattern">
+        <div class="form clientModelWindow">
+            <div class="title_row_client_form">
+                <span class="title_form">Новый шаблон документов</span>
+                <i class='bx bx-x icon close-button'></i>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="column">
+                    <!-- Первая колонка (левая) -->
+                    <label for="select3">Название</label>
+                    <input list="select3" id="select3Input" name="select1Input" placeholder="Выберите или введите">
+                    <datalist id="select3">
+                        <option value="Опция 1">
+                        <option value="Опция 2">
+                        <option value="Опция 3">
+                    </datalist>
+                    <label for="file">Загрузка файлов</label>
+                    <input type="file" id="file" name="file" multiple>
+
+
+
+                </div>
+                <div class="column">
+                    <label for="description_docks">Описание</label>
+                    <textarea class="textareaDocksPattern" id="description_docks" name="textarea" placeholder="Введите текст"></textarea>
+                </div>
+
+            </form>
+            <div class="create-note">
+                <button class="create-button">Создать</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<section class="home">
+    <div class="upper_text">
+        <b3>Шаблоны документов</b3>
+        <b3>OneCRM</b3>
+    </div>
+    <div class="card_menu">
+        <div class="upper_table_user">
+            <button class="btn" id="openDocksCreateBtn">Добавить</button>
+            <div class="search_table">
+                <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+            </div>
+        </div>
+        <table class="custom-docks-table">
+            <tr>
+                <th>Код</th>
+                <th>Название</th>
+                <th>Редактор</th>
+                <th>Последнее обновление</th>
+            </tr>
+            <tr class="user-row" >
+                <td class="user-cell">1</td>
+                <td class="user-cell">Договор обслуживания</td>
+                <td class="user-cell">Парамонов Константин</td>
+                <td class="user-cell">12.12.12</td>
+            </tr>
+            <tr class="user-row" >
+                <td class="user-cell">2</td>
+                <td class="user-cell">Договор обслуживания</td>
+                <td class="user-cell">Парамонов Константин</td>
+                <td class="user-cell">12.12.12</td>
+            </tr>
+            <!-- Добавьте больше строк пользователей по желанию -->
+        </table>
+    </div>
+</section>
+
+<script>
+    // Открытие модального окна
+document.getElementById('openDocksCreateBtn').addEventListener('click', function() {
+    document.getElementById('clientModal').style.display = 'block';
+});
+
+// Закрытие модального окна при нажатии кнопки "Закрыть" на форме
+document.querySelectorAll('.close-button').forEach(function(element) {
+    element.addEventListener('click', function() {
+        document.getElementById('clientModal').style.display = 'none';
+    });
+});
+
+</script>
+{% endblock %}\ 9
