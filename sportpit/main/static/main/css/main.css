@@ -929,3 +929,12 @@ textarea:hover, select:hover, input[type="file"]:hover, input:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Цвет полосы прокрутки при наведении */
 }
+
+.page-numbers a{
+    color: black;
+}
+
+a.current {
+    font-weight: bold;
+    /* Другие стили, которые вы хотите применить */
+}

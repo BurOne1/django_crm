@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Client  # Импортируйте модель данных Client
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -72,14 +75,18 @@ def client(request):
     return render(request, 'main/client.html', {'clients': clients})
 
 
+# страница сотрудников + пагинация
 def user(request):
     users = User.objects.all()
-    return render(request, 'main/more_users.html', {'users': users})
 
+    paginator = Paginator(users, 5)
+    page = request.GET.get('page')
+    users = paginator.get_page(page)
 
-def user_list(request):
-    users = User.objects.all()
-    return render(request, 'main/more_users.html', {'users': users})
+    page_number = users.number
+    page_range = range(max(1, page_number - 2), min(users.paginator.num_pages, page_number + 2) + 1)
+
+    return render(request, 'main/more_users.html', {'users': users, 'page_range': page_range})
 
 
 def docks_list(request):
