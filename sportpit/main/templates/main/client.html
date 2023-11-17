@@ -81,11 +81,22 @@
         <b3>OneCRM</b3>
     </div>
     <div class="card_menu">
-        <div class="upper_table_user">
-            <button class="btn" id="openClientFormClientBtn">Добавить</button>
-            <div class="search_table">
-                <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+        <div class="upper_table_client">
+            <div class="search-table-inputs">
+                <div class="search_table">
+                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+                </div>
+                <div class="search_table">
+                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+                </div>
+                <div class="search_table">
+                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+                </div>
+                <div class="search_table">
+                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+                </div>
             </div>
+            <button class="btn" id="openClientFormClientBtn">Добавить</button>
         </div>
         <table class="custom-table">
             <tr>
@@ -100,8 +111,10 @@
             <tr class="user-row">
                 <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</a></td>
                 <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.email }}</a></td>
-                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.contact_number }}</a></td>
-                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.organization_name }}</a></td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.contact_number }}</a>
+                </td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.organization_name }}</a>
+                </td>
                 <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.inn }}</a></td>
                 <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.bank_account }}</a></td>
             </tr>
@@ -138,6 +151,8 @@ userCells.forEach(cell => {
         }
     });
 });
+
+
 
 
 

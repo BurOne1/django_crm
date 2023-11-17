@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/646065abfa.js" crossorigin="anonymous"></script>
-<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <!--<header>-->
@@ -53,6 +53,7 @@
         </header>
         <div class="menu-bar">
             <div class="menu">
+
                 <li class="search-box">
                     <i class='bx bx-search icon'></i>
                     <input type="text" placeholder="Поиск...">
@@ -83,7 +84,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="{% url 'list_docks' %}">
+                        <a href="{% url 'your_form_list' %}">
                             <i class='bx bx-file icon'></i>
                             <span class="text nav-text">Документы</span>
                         </a>

@@ -10,6 +10,31 @@ from django.http import JsonResponse
 
 
 # Create your views here.
+def your_form_list(request):
+    users = User.objects.all()
+    # Применяем фильтры
+    search_query = request.GET.get('search')
+    if search_query:
+        users = users.filter(first_name__icontains=search_query) | users.filter(username__icontains=search_query)
+
+    # Добавляем пагинацию
+    paginator = Paginator(users, 10)  # 10 объектов на странице
+    page = request.GET.get('page')
+
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+
+    context = {
+        'Users': users,
+        'search_query': search_query,
+    }
+
+    return render(request, 'main/doks_list.html', context)
+
 
 # Функция ВХОДА в систему
 def index(request):
@@ -67,6 +92,7 @@ def logout_user(request):
 def work(request):
     clients = Client.objects.all()
     users = User.objects.all()
+
     return render(request, 'main/work.html', {'clients': clients, 'users': users})
 
 
@@ -78,15 +104,47 @@ def client(request):
 # страница сотрудников + пагинация
 def user(request):
     users = User.objects.all()
+    all_users = User.objects.all()
+    search_query = request.GET.get('search')
+    if search_query:
+        users = users.filter(first_name__icontains=search_query) | users.filter(username__icontains=search_query)
 
-    paginator = Paginator(users, 5)
+    # Упорядочиваем QuerySet
+    sort_by = request.GET.get('sort_by', 'id')  # По умолчанию сортируем по id
+    direction = request.GET.get('direction', 'asc')  # По умолчанию сортировка по возрастанию
+
+    if direction == 'desc':
+        sort_by = '-' + sort_by  # Добавляем '-' для сортировки по убыванию
+
+    users = users.order_by(sort_by)
+
+    paginator = Paginator(users, 7)  # 10 объектов на странице
     page = request.GET.get('page')
-    users = paginator.get_page(page)
+
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+
+
+    # paginator = Paginator(users, 15)
+    # page = request.GET.get('page')
+    # users = paginator.get_page(page)
 
     page_number = users.number
     page_range = range(max(1, page_number - 2), min(users.paginator.num_pages, page_number + 2) + 1)
 
-    return render(request, 'main/more_users.html', {'users': users, 'page_range': page_range})
+    context = {
+        'users': users,
+        'page_range': page_range,
+        'search_query': search_query,
+        'sort_by': sort_by,
+        'direction': direction,
+    }
+
+    return render(request, 'main/more_users.html', context)
 
 
 def docks_list(request):

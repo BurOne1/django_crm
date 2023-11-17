@@ -26,11 +26,11 @@
                     <input type="file" id="file" name="file" multiple>
 
 
-
                 </div>
                 <div class="column">
                     <label for="description_docks">Описание</label>
-                    <textarea class="textareaDocksPattern" id="description_docks" name="textarea" placeholder="Введите текст"></textarea>
+                    <textarea class="textareaDocksPattern" id="description_docks" name="textarea"
+                              placeholder="Введите текст"></textarea>
                 </div>
 
             </form>
@@ -49,48 +49,67 @@
         <b3>OneCRM</b3>
     </div>
     <div class="card_menu">
-        <div class="upper_table_user">
-            <button class="btn" id="openDocksCreateBtn">Добавить</button>
-            <div class="search_table">
-                <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
-            </div>
-        </div>
-        <table class="custom-docks-table">
+        <form method="get">
+            <input type="text" name="search" value="{{ search_query }}" placeholder="Search...">
+            <input type="submit" value="Search">
+        </form>
+
+
+        <table>
+            <thead>
             <tr>
-                <th>Код</th>
-                <th>Название</th>
-                <th>Редактор</th>
-                <th>Последнее обновление</th>
+                <th>Your Field</th>
+                <th>Your Field</th>
+                <!-- Добавь другие заголовки для фильтрации -->
             </tr>
-            <tr class="user-row" >
-                <td class="user-cell">1</td>
-                <td class="user-cell">Договор обслуживания</td>
-                <td class="user-cell">Парамонов Константин</td>
-                <td class="user-cell">12.12.12</td>
+            </thead>
+            <tbody>
+            {% for user in Users %}
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.username }}</td>
+                <!-- Добавь другие поля для отображения данных -->
             </tr>
-            <tr class="user-row" >
-                <td class="user-cell">2</td>
-                <td class="user-cell">Договор обслуживания</td>
-                <td class="user-cell">Парамонов Константин</td>
-                <td class="user-cell">12.12.12</td>
-            </tr>
-            <!-- Добавьте больше строк пользователей по желанию -->
+            {% endfor %}
+            </tbody>
         </table>
+
+
+            <div class="pagination">
+    <span class="step-links">
+        {% if Users.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ queryset.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ Users.number }} of {{ Users.paginator.num_pages }}.
+        </span>
+
+        {% if Users.has_next %}
+            <a href="?page={{ queryset.next_page_number }}">next</a>
+            <a href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+            </div>
+
+
     </div>
 </section>
 
-<script>
-    // Открытие модального окна
-document.getElementById('openDocksCreateBtn').addEventListener('click', function() {
-    document.getElementById('clientModal').style.display = 'block';
-});
+<!--<script>-->
+<!--    // Открытие модального окна-->
+<!--document.getElementById('openDocksCreateBtn').addEventListener('click', function() {-->
+<!--    document.getElementById('clientModal').style.display = 'block';-->
+<!--});-->
 
-// Закрытие модального окна при нажатии кнопки "Закрыть" на форме
-document.querySelectorAll('.close-button').forEach(function(element) {
-    element.addEventListener('click', function() {
-        document.getElementById('clientModal').style.display = 'none';
-    });
-});
+<!--// Закрытие модального окна при нажатии кнопки "Закрыть" на форме-->
+<!--document.querySelectorAll('.close-button').forEach(function(element) {-->
+<!--    element.addEventListener('click', function() {-->
+<!--        document.getElementById('clientModal').style.display = 'none';-->
+<!--    });-->
+<!--});-->
 
-</script>
-{% endblock %}\ 9
+
+<!--</script>-->
+{% endblock %}

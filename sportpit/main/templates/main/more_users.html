@@ -20,53 +20,82 @@
         <div class="table-container-work">
             <div class="upper_table_user">
                 <button class="btn">Добавить</button>
+
                 <div class="search_table">
-                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
-                </div>
-                <span class="current-page">
-                            Страница {{ users.number }} из {{ users.paginator.num_pages }}
-                    Показано с {{ users.start_index }} по {{ users.end_index }} из {{ page.paginator.count }} элементов
-                </span>
-                <div>
-                    {% if users.has_previous %}
                     <form method="get">
-                        <!--                        <button type="submit" name="page" value="1">&laquo; первая</button>-->
-                        <button type="submit" name="page" value="{{ users.previous_page_number }}">предыдущая</button>
+                        <input placeholder="Найти сотрудника" class="input" name="search" id="searchInput"
+                               type="text"
+                               value="{{ search_query|default:'' }}">
+                        <input type="submit" value="Search">
+                        <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                        <input type="hidden" name="direction" value="{{ direction }}">
                     </form>
-                    {% endif %}
-                    {% if users.has_next %}
-                    <form method="get">
-                        <button type="submit" name="page" value="{{ users.next_page_number }}">следующая</button>
-                        <!--                        <button type="submit" name="page" value="{{ users.paginator.num_pages }}">последняя &raquo;-->
-                        <!--                        </button>-->
-                    </form>
-                    {% endif %}
-                </div>
-                <div class="page-numbers">
-                    <a href="?page=1" class="{% if users.number == 1 %}current{% endif %}">1</a>
-                    {% if users.number > 4 %}
-                        <span class="ellipsis">...</span>
-                    {% endif %}
-                    {% for num in page_range %}
-                        {% if num != 1 and num != users.paginator.num_pages %}
-                            <a href="?page={{ num }}" class="{% if num == users.number %}current{% endif %}">{{ num }}</a>
-                        {% endif %}
-                    {% endfor %}
-                    {% if users.number < users.paginator.num_pages|add:"-3" %}
-                        <span class="ellipsis">...</span>
-                    {% endif %}
-                    <a href="?page={{ users.paginator.num_pages }}" class="{% if users.number == users.paginator.num_pages %}current{% endif %}">{{users.paginator.num_pages}}</a>
                 </div>
 
+                <span class="current-page">
+<!--                            Страница {{ users.number }} из {{ users.paginator.num_pages }}-->
+                    <b3>Всего сотрудников: {{ users.paginator.count }}</b3>
+                    На странице с {{ users.start_index }} по {{ users.end_index }}
+                </span>
+
+                <div class="page-buttons">
+                    <div class="in-page-buttons">
+                        <form class="pagination-form" method="get">
+                            <button type="submit" name="page"
+                                    value="{% if users.has_previous %}{{ users.previous_page_number }}{% else %}1{% endif %}"
+                                    class="{% if not users.has_previous %}disabled-button{% endif %}">
+                                <i class="fas fa-chevron-left"></i> <!-- FontAwesome иконка влево -->
+                            </button>
+                        </form>
+                    </div>
+                    <div class="in-page-buttons">
+                        <form class="pagination-form" method="get">
+                            <button type="submit" name="page"
+                                    value="{% if users.has_next %}{{ users.next_page_number }}{% else %}{{ users.paginator.num_pages }}{% endif %}"
+                                    class="{% if not users.has_next %}disabled-button{% endif %}">
+                                <i class="fas fa-chevron-right"></i> <!-- FontAwesome иконка вправо -->
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="page-numbers">
+                    <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                       class="{% if users.number == 1 %}current{% endif %}">1</a>
+                    {% if users.number > 4 %}
+                    <span class="ellipsis">...</span>
+                    {% endif %}
+                    {% for num in page_range %}
+                    {% if num != 1 and num != users.paginator.num_pages %}
+                    <a href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                       class="{% if num == users.number %}current{% endif %}">{{ num }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if users.number < users.paginator.num_pages|add:"-3" %}
+                    <span class="ellipsis">...</span>
+                    {% endif %}
+                    <a href="?page={{ users.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                       class="{% if users.number == users.paginator.num_pages %}current{% endif %}">
+                        {{ users.paginator.num_pages }}</a>
+                </div>
+                <a href="?sort_by=id&direction={{ direction }}" style="color: red">ID</a>
+                <a href="?sort_by=last_name&direction={{ direction }}" style="color: red">Last Name</a>
+                <a href="?sort_by=date_joined&direction={{ direction }}" style="color: red">Date Joined</a>
+
+                <!--                <label class="switch">-->
+                <!--                    <input type="checkbox" id="dataToggle" checked="">-->
+                <!--                </label>-->
             </div>
             <div class="table-scroll-work">
-                <table id="client-table">
+                <table class="pagination_users_t" id="user-table">
                     <thead>
                     <tr>
-                        <th>Имя</th>
+                        <th><a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=first_name&direction={{ direction }}" style="color: green">First Name</a>Имя</th>
                         <th>Фамилия</th>
                         <th>Email</th>
                         <th>Телефон</th>
+                        <th><a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=date_joined&direction={{ direction }}" style="color: green">Дата рег</a>data
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -76,6 +105,8 @@
                         <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.last_name }}</a></td>
                         <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.email }}</a></td>
                         <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.username }}</a></td>
+                        <td class="user-cell"><a href="{% url 'user-details' user.id %}">
+                            {{ user.date_joined|date:"d.m.Y" }}</a></td>
                     </tr>
                     {% endfor %}
                     </tbody>
@@ -101,12 +132,29 @@
             }
         });
     });
+// jquery запрос
+$('.disabled-button').click(function(event) {
+    event.preventDefault();
+    return false;
+});
 
 
 
 
 
-
+$(document).ready(function () {
+    $('#searchInput').on('input', function () {
+        var searchText = $(this).val().toLowerCase();
+        $('#full-data-table tbody tr').each(function () {
+            var rowText = $(this).text().toLowerCase();
+            if (rowText.indexOf(searchText) === -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    });
+});
 
 
 

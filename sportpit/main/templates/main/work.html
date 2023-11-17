@@ -95,9 +95,14 @@
             <div class="upper_table_user">
                 <button class="btn" id="openModalBtn">Добавить</button>
                 <div class="search_table">
-                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+                    <input placeholder="Найти сотрудника" class="input" name="firstName" id="searchInputWork" type="text">
                 </div>
-                <b3>Страница 1</b3>
+                <button class="btn" id="searchWorkBtn">Поиск</button>
+                <span class="current-page">
+                    <b3>Страница 1</b3>
+                    <b3>Страница 1</b3>
+                </span>
+
                 <div id="pagination">
                     <button id="prev-page">Предыдущая</button>
                     <button id="next-page">Следующая</button>
@@ -106,8 +111,8 @@
                     </div>
                 </div>
             </div>
-            <div class="table-scroll-work">
-                <table>
+            <div class="table-scroll-work" >
+                <table class="pagination_work_table" id="pagination-work-table">
                     <thead>
                     <tr>
                         <th>Заголовок 1</th>
@@ -120,142 +125,78 @@
                     <tbody>
                     <tr>
                         <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 1</td>
+                        <td>Содержимое 1</td>
                         <!-- Другие ячейки содержимого -->
                     </tr>
                     <tr>
-                        <td>Содержимое 5</td>
-                        <td>Содержимое 6</td>
-                        <td>Содержимое 7</td>
-                        <td>Содержимое 8</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 2</td>
+                        <td>Содержимое 2</td>
                         <!-- Другие ячейки содержимого -->
                     </tr>
+                    <tr>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 3</td>
+                        <td>Содержимое 3</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="all_work_search" id="all-work-table" style="display: none">
+                    <thead>
+                    <tr>
+                        <th>Zagolovok 1</th>
+                        <th>Zagolovok 2</th>
+                        <th>Zagolovok 3</th>
+                        <th>Zagolovok 4</th>
+                        <!-- Другие заголовки -->
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
                         <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
                         <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
                         <td>Содержимое 1</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 12</td>
+                        <td>Содержимое 12</td>
+                        <td>Содержимое 12</td>
+                        <td>Содержимое 12</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 13</td>
+                        <td>Ваня 13</td>
+                        <td>Содержимое 13</td>
+                        <td>Содержимое 13</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
                         <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 5</td>
-                        <td>Содержимое 6</td>
-                        <td>Содержимое 7</td>
-                        <td>Содержимое 8</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
                         <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
                         <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
                         <td>Содержимое 2</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
+                        <td>Содержимое 24</td>
+                        <td>Содержимое 24</td>
+                        <td>Содержимое 24</td>
+                        <td>Содержимое 24</td>
+                        <!-- Другие ячейки содержимого -->
+                    </tr>
+                    <tr>
                         <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
                         <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 5</td>
-                        <td>Содержимое 6</td>
-                        <td>Содержимое 7</td>
-                        <td>Содержимое 8</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
                         <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
                         <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 5</td>
-                        <td>Содержимое 6</td>
-                        <td>Содержимое 7</td>
-                        <td>Содержимое 8</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
-                        <!-- Другие ячейки содержимого -->
-                    </tr>
-                    <tr>
-                        <td>Содержимое 1</td>
-                        <td>Содержимое 2</td>
-                        <td>Содержимое 3</td>
-                        <td>Содержимое 4</td>
                         <!-- Другие ячейки содержимого -->
                     </tr>
                     </tbody>
@@ -282,6 +223,45 @@ document.querySelectorAll('.close-button').forEach(function(element) {
 });
 
 
+$(document).ready(function () {
+    $('#searchInputWork').on('input', function () {
+        var searchText = $(this).val().toLowerCase();
+        $('#all-work-table tbody tr').each(function () {
+            var rowText = $(this).text().toLowerCase();
+            if (rowText.indexOf(searchText) === -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInputWork = document.getElementById('searchInputWork');
+
+    const pagWorkTable = document.getElementById('pagination-work-table');
+    const allWorkSearchTable = document.querySelector('.all_work_search');
+
+
+
+    // Отслеживаем ввод текста в поле поиска
+    searchInputWork.addEventListener('input', function() {
+        const searchText = searchInputWork.value.toLowerCase();
+
+        // Проверяем, в какой таблице искать и скрываем/показываем строки
+        if (searchText.length > 0) {
+            pagWorkTable.style.display = 'none';
+            allWorkSearchTable.style.display = 'table';
+            // Обновите эту часть, чтобы выполнить поиск и скрыть строки, которые не соответствуют критериям.
+            // Вы можете использовать цикл, чтобы пройти через строки и сравнить текст с searchText.
+        } else {
+            pagWorkTable.style.display = 'table';
+            allWorkSearchTable.style.display = 'none';
+        }
+    });
+});
 
 
 
