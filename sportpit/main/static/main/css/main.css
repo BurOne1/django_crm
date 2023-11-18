@@ -434,12 +434,7 @@ header .image-text .header-text {
    margin-top: 10px;
 }
 
-.upper_table_user {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   margin: 10px;
-}
+
 
 .upper_table_client {
    display: flex;
@@ -477,6 +472,13 @@ table {
    font-size: 13px;
 }
 
+.into_h_table {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+
 th,td {
    border: 1px solid #dddddd;
    padding: 8px 20px;
@@ -508,7 +510,7 @@ tr:hover {
 
 .pagination_users_t th:nth-child(3),
 .pagination_users_t td:nth-child(3) {
-            width: 30% !important;
+            width: 25% !important;
 }
 
 .pagination_users_t th:nth-child(4),
@@ -518,7 +520,7 @@ tr:hover {
 
 .pagination_users_t th:nth-child(5),
 .pagination_users_t td:nth-child(5) {
-            width: 15% !important;
+            width: 20% !important;
 }
 
 
@@ -552,53 +554,7 @@ tr:hover {
             width: 21%;
 }
 
-.btn {
-  background-color: #f0e0ff;
-  color: #707070;
-  border: none;
-  border-radius: 6px;
-  width: 100px;
-  height: 100%;
-  transition: .3s;
-  font-size: 16px;
-  margin-right: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
 
-.btn:hover {
-  background-color: #ae59ff;
-  color: #FFF;
-}
-
-.search_table{
-  width: 18%;
-  max-width: 240px;
-  height: 100%;
-
-}
-
-.search_table .input {
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 16px;
-  color: #707070;
-  padding: 0 0 0 5px;
-  border-radius: 6px;
-  background-color: #f0e0ff;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.search_table .input::placeholder {
-  color: #555;
-  transition: all 0.3s ease;
-}
-
-.search_table .input:focus::placeholder {
-  color: #999;
-}
 
 /*  */
 /* Форма заполнения заявки о клиенте */
@@ -1020,18 +976,9 @@ a.current {
     flex-direction: row;
 }
 
-.current-page {
-    display: flex;
-    background-color: #E4E9F7;
-    color: #606060;
-    font-weight: 500;
-    flex-direction: column;
-    width: 240px;
-    font-size: 16px;
-    margin: 0px 20px 0 18px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
+
+
+
+
+
 

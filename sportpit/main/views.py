@@ -104,21 +104,21 @@ def client(request):
 # страница сотрудников + пагинация
 def user(request):
     users = User.objects.all()
-    all_users = User.objects.all()
     search_query = request.GET.get('search')
     if search_query:
-        users = users.filter(first_name__icontains=search_query) | users.filter(username__icontains=search_query)
+        users = users.filter(first_name__icontains=search_query) | users.filter(
+            username__icontains=search_query) | users.filter(email__icontains=search_query) | users.filter(
+            last_name__icontains=search_query)
 
     # Упорядочиваем QuerySet
     sort_by = request.GET.get('sort_by', 'id')  # По умолчанию сортируем по id
     direction = request.GET.get('direction', 'asc')  # По умолчанию сортировка по возрастанию
 
-    if direction == 'desc':
-        sort_by = '-' + sort_by  # Добавляем '-' для сортировки по убыванию
+    order_by = sort_by if direction == 'asc' else f"-{sort_by}"
 
-    users = users.order_by(sort_by)
+    users = users.order_by(order_by)
 
-    paginator = Paginator(users, 7)  # 10 объектов на странице
+    paginator = Paginator(users, 5)  # 10 объектов на странице
     page = request.GET.get('page')
 
     try:
@@ -127,7 +127,6 @@ def user(request):
         users = paginator.page(1)
     except EmptyPage:
         users = paginator.page(paginator.num_pages)
-
 
     # paginator = Paginator(users, 15)
     # page = request.GET.get('page')
