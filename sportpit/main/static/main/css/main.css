@@ -1,6 +1,7 @@
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+
 * {
    font-family: 'Poppins', sans-serif;
    margin: 0;
@@ -51,176 +52,27 @@ a {
 
 /* 3 */
 
-.sideBar .text{
-   font-size: 16px;
-   font-weight: 500;
-   color: #808080;
-   transition: all .3s ease;
-   white-space: nowrap;
-   opacity: 1;
-}
 
-.sideBar.close .text{
-   opacity: 0;
-}
-
-.sideBar .image{
-   min-weight: 60px;
-   display: flex;
-   align-items: center;
-
-}
-/* 3 */
-.sideBar{
-   position: fixed;
-   top: 0;
-   left: 0;
-   height: 100%;
-   width: 250px;
-   padding: 10px 14px;
-   background: #FFF;
-   transition: all .5s ease;
-   z-index: 100;
-}
-
-.sideBar.close{
-   width: 60px;
-}
-
-.sideBar li{
-   height: 50px;
-   margin-top: 10px;
-   list-style: none;
-   display: flex;
-   align-items: center;
-}
-
-.sideBar .menu {
-   margin-top: 35px;
-}
-
-.sideBar header {
-   position: relative;
-}
-
-.sideBar li .icon {
-   min-width: 60px;
-   font-size: 20px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-.sideBar li .icon,
-.sideBar li .text{
-   color: #707070;
-   transition: all .3s ease;
-}
-
-.sideBar .image-text img{
-  width: 40px;
-  border-radius: 6px;
-}
 
 
 main {
    display: flex;
-
-}
-
-.sideBar header .image-text{
-   display: flex;
-   align-items: center;
-}
-
-header .image-text .header-text {
-   padding-left: 10px;
-   display: flex;
-   flex-direction: column;
-}
-
-.header-text .name {
-   font-weight: 600;
-}
-
-.header-text .professions {
-   margin-top: -2px;
-}
-
-.sideBar header .toggle {
-   position: absolute;
-   top: 50%;
-   right: -30px;
-   transform: translateY(-50%) rotate(180deg);
-   height: 30px;
-   width: 30px;
-   background: #ae59ff;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 50%;
-   color: #FFF;
-   font-size: 26px;
-   transition: all .7s ease;
-}
-
-.sideBar.close header .toggle{
-   transform: translateY(-50%);
-}
-
-.sideBar .search-box {
-   background: #f0e0ff;
-   border-radius: 6px;
-}
-
-.search-box input {
-   height: 100%;
-   width: 100%;
-   background: #f0e0ff;
-   outline: none;
-   border: none;
-   border-radius: 6px;
-   font-size: 16px;
-   font-weight: 500;
-}
-
-.sideBar li a{
-   width: 100%;
-   height: 100%;
-   text-decoration: none;
-   display: flex;
-   align-items: center;
-   border-radius: 6px;
-   transition: all .3s ease;
-}
-
-.sideBar ul a:hover {
-   background: #ae59ff;
-}
-
-.sideBar ul a:hover .icon,
-.sideBar ul a:hover .text {
-   color: #FFF;
+   margin-left: 88px;
 }
 
 
-.sideBar .menu-bar {
-   height: calc(100% - 70px);
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-}
 
 .home {
-   position: relative;
+   position: fixed;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: top;
    height: 100vh;
-   left: 278px;
-   width: calc(100% - 278px);
+   width:  calc(100% - 88px);
    transition: all .5s ease;
-   background: #E4E9F7;
+   background: #e7e7e7;
+   /*background: #E4E9F7;*/
 }
 
 .center_auth {
@@ -237,14 +89,15 @@ header .image-text .header-text {
 
 /* Карта на экране */
 
-.home .card_menu {
+.card_menu {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: top;
    background: #FFF;
+   margin: 40px;
    height: calc(100% - 100px);
-   width: calc(100% - 88px);
+   width: calc(100% - 168px);
    border-radius: 10px;
    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 
@@ -255,17 +108,14 @@ header .image-text .header-text {
 .home .upper_text{
    display: flex;
    justify-content: space-between;
-   width: calc(100% - 196px);
+   width: 100%;
    font-size: 28px;
    font-weight: 500;
    color: #707070;
-   padding: 8px 40px;
+
 }
 
-.sideBar.close ~ .home{
-   left: 88px;
-   width: calc(100% - 88px);
-}
+
 /* work */
 
 
@@ -452,6 +302,7 @@ header .image-text .header-text {
 table {
    border-collapse: collapse;
    width: 100%;
+   color: #707070;
    font-family: Arial, sans-serif;
    table-layout: fixed; /* Задаем фиксированную ширину таблицы */
 }
@@ -472,56 +323,8 @@ table {
    font-size: 13px;
 }
 
-.into_h_table {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   align-items: center;
-}
 
-th,td {
-   border: 1px solid #dddddd;
-   padding: 8px 20px;
-   text-align: left;
-}
 
-th {
-   background-color: #f2f2f2;
-   font-weight: bold;
-}
-
-tr:nth-child(even) {
-   background-color: #f9f9f9;
-}
-
-tr:hover {
-   background-color: #f5f5f5;
-}
-
-.pagination_users_t th:nth-child(1),
-.pagination_users_t td:nth-child(1) {
-            width: 15% !important;
-}
-
-.pagination_users_t th:nth-child(2),
-.pagination_users_t td:nth-child(2) {
-            width: 15% !important;
-}
-
-.pagination_users_t th:nth-child(3),
-.pagination_users_t td:nth-child(3) {
-            width: 25% !important;
-}
-
-.pagination_users_t th:nth-child(4),
-.pagination_users_t td:nth-child(4) {
-            width: 25% !important;
-}
-
-.pagination_users_t th:nth-child(5),
-.pagination_users_t td:nth-child(5) {
-            width: 20% !important;
-}
 
 
 .custom-table th:nth-child(1),
@@ -897,11 +700,12 @@ textarea:hover, select:hover, input[type="file"]:hover, input:hover {
   width: 100%;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
+
 }
 
 .table-scroll-work {
+  margin: 12px;
+
   flex: 1;
   overflow-y: auto; /* Добавляем вертикальный скроллинг при необходимости. */
 }
@@ -923,58 +727,7 @@ textarea:hover, select:hover, input[type="file"]:hover, input:hover {
     background: #555; /* Цвет полосы прокрутки при наведении */
 }
 
-.page-numbers a{
-    color: #606060;
-    font-weight: 500;
-    margin: 0 2px;
-}
 
-a.current {
-    font-weight: 800;
-    color: #303030;
-    /* Другие стили, которые вы хотите применить */
-}
-
-/* Стили для кнопок */
-.page-buttons button {
-    padding: 5px 10px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin: 0 2px;
-    background-color: #ae59ff;
-    border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.page-buttons button.disabled-button {
-    background-color: #707070;
-    cursor: not-allowed;
-}
-
-/* Стили для разделителя "..." */
-.upper_table_user .ellipsis {
-    margin: 0 3px;
-}
-
-.page-numbers {
-    display: flex;
-    margin: 0 10px;
-    background: #E4E9F7;
-    height: 100%;
-    width: 140px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Стили для блока кнопок */
-.page-buttons {
-    display: flex;
-    margin: 0px 10px 0 0;
-    flex-direction: row;
-}
 
 
 

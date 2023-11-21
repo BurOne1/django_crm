@@ -118,7 +118,7 @@ def user(request):
 
     users = users.order_by(order_by)
 
-    paginator = Paginator(users, 5)  # 10 объектов на странице
+    paginator = Paginator(users, 20)  # 10 объектов на странице
     page = request.GET.get('page')
 
     try:
