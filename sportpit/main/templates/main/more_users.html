@@ -12,7 +12,7 @@
 
 <section class="home">
 
-    <div class="table-container-work">
+
         <div class="up_bar">
             <div class="upper_table_user">
                 <div class="upper_table">
@@ -125,7 +125,7 @@
                         <div class="into_h_table">
                             Имя
                             <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=first_name&direction={% if sort_by == 'first_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #ae59ff">
+                               style="color: #f0b4a6">
                                 {% if sort_by == 'first_name' and direction == 'asc' %}
                                 <i class="fa-solid fa-sort-down"></i>
                                 {% elif sort_by == 'first_name' and direction == 'desc' %}
@@ -142,7 +142,7 @@
                         <div class="into_h_table">
                             Фамилия
                             <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=last_name&direction={% if sort_by == 'last_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #ae59ff">
+                               style="color: #f0b4a6">
                                 {% if sort_by == 'last_name' and direction == 'asc' %}
                                 <i class="fa-solid fa-sort-down"></i>
                                 {% elif sort_by == 'last_name' and direction == 'desc' %}
@@ -157,7 +157,7 @@
                         <div class="into_h_table">
                             Email
                             <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=email&direction={% if sort_by == 'email' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #ae59ff">
+                               style="color: #f0b4a6">
                                 {% if sort_by == 'email' and direction == 'asc' %}
                                 <i class="fa-solid fa-sort-down"></i>
                                 {% elif sort_by == 'email' and direction == 'desc' %}
@@ -173,7 +173,7 @@
                         <div class="into_h_table">
                             Телефон
                             <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=username&direction={% if sort_by == 'username' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #ae59ff">
+                               style="color: #f0b4a6">
                                 {% if sort_by == 'username' and direction == 'asc' %}
                                 <i class="fa-solid fa-sort-down"></i>
                                 {% elif sort_by == 'username' and direction == 'desc' %}
@@ -188,7 +188,7 @@
                         <div class="into_h_table">
                             Регистрация
                             <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=date_joined&direction={% if sort_by == 'date_joined' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #ae59ff">
+                               style="color: #f0b4a6">
                                 {% if sort_by == 'date_joined' and direction == 'asc' %}
                                 <i class="fa-solid fa-sort-down"></i>
                                 {% elif sort_by == 'date_joined' and direction == 'desc' %}
@@ -210,7 +210,7 @@
                 <tr class="user-row">
                     <td>
                         <label class="custom-checkbox">
-                            <input name="dummy" type="checkbox" value="{{ users.id }}">
+                            <input name="dummy" type="checkbox" value="{{ user.id }}">
                             <span class="checkmark"></span>
                         </label>
                     </td>
@@ -225,7 +225,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
 
     <!--    </div>-->
 

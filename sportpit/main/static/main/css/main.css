@@ -111,7 +111,7 @@ main {
    width: 100%;
    font-size: 28px;
    font-weight: 500;
-   color: #707070;
+   color: #FFF;
 
 }
 
@@ -320,41 +320,45 @@ table {
 }
 
 .custom-table {
+
    font-size: 13px;
 }
 
 
 
-
-
 .custom-table th:nth-child(1),
 .custom-table td:nth-child(1) {
-            width: 19%;
+            width: 5%;
 }
 
 .custom-table th:nth-child(2),
 .custom-table td:nth-child(2) {
-            width: 15%;
+            width: 20%;
 }
 
 .custom-table th:nth-child(3),
 .custom-table td:nth-child(3) {
-            width: 15%;
+            width: 20%;
 }
 
 .custom-table th:nth-child(4),
 .custom-table td:nth-child(4) {
-            width: 15%;
+            width: 12%;
 }
 
 .custom-table th:nth-child(5),
 .custom-table td:nth-child(5) {
-            width: 15%;
+            width: 20%;
 }
 
 .custom-table th:nth-child(6),
 .custom-table td:nth-child(6) {
-            width: 21%;
+            width: 13%;
+}
+
+.custom-table th:nth-child(7),
+.custom-table td:nth-child(7) {
+            width: 10%;
 }
 
 

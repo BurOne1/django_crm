@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
+   /*--main-color: #f0b4a6; оранжевый */
+   /* --main-color: #86b261; зелёный-оливковый*/
+   /* --main-color: #228B22; Лесной*/
    --main-color: #f0b4a6;
    --main-two-color: #a6d3f0;
 }
@@ -109,7 +112,7 @@
 .current-page {
     display: flex;
     background-color: #E4E9F7;
-    color: #606060;
+    color: #707070;
     font-weight: 500;
     flex-direction: column;
     width: 240px;
@@ -183,6 +186,10 @@ a.current {
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
+}
+
+.into_h_table .a{
+   color: var(--main-color);
 }
 
 td {

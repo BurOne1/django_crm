@@ -98,7 +98,43 @@ def work(request):
 
 def client(request):
     clients = Client.objects.all()
-    return render(request, 'main/client.html', {'clients': clients})
+
+    search_query = request.GET.get('search')
+    if search_query:
+        clients = clients.filter(first_name__icontains=search_query) | clients.filter(
+            organization_name__icontains=search_query) | clients.filter(email__icontains=search_query) | clients.filter(
+            last_name__icontains=search_query)
+
+    # Упорядочиваем QuerySet
+    sort_by = request.GET.get('sort_by', 'id')  # По умолчанию сортируем по id
+    direction = request.GET.get('direction', 'asc')  # По умолчанию сортировка по возрастанию
+
+    order_by = sort_by if direction == 'asc' else f"-{sort_by}"
+
+    clients = clients.order_by(order_by)
+
+    paginator = Paginator(clients, 10)  # 10 объектов на странице
+    page = request.GET.get('page')
+
+    try:
+        clients = paginator.page(page)
+    except PageNotAnInteger:
+        clients = paginator.page(1)
+    except EmptyPage:
+        clients = paginator.page(paginator.num_pages)
+
+    page_number = clients.number
+    page_range = range(max(1, page_number - 2), min(clients.paginator.num_pages, page_number + 2) + 1)
+
+    context = {
+        'clients': clients,
+        'page_range': page_range,
+        'search_query': search_query,
+        'sort_by': sort_by,
+        'direction': direction,
+    }
+
+    return render(request, 'main/client.html', context)
 
 
 # страница сотрудников + пагинация

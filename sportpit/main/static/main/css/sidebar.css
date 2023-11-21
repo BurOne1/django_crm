@@ -26,7 +26,9 @@
    width: 60px;
    padding: 10px 14px;
    background: #FFF;
-   transition: all .5s ease;
+   /*background: #646464;*/
+
+
    z-index: 100;
 }
 
@@ -45,11 +47,13 @@
 }
 
 .sideBar .menu {
-   margin-top: 35px;
+   margin-top: 25px;
 }
 
 .sideBar header {
    position: relative;
+
+
 }
 
 .sideBar li .icon {
@@ -73,6 +77,7 @@
 .sideBar header .image-text{
    display: flex;
    align-items: center;
+   justify-content: center;
 }
 
 header .image-text .header-text {
@@ -82,9 +87,10 @@ header .image-text .header-text {
 }
 
 .header-text .name {
+   display: flex;
    font-weight: 600;
    font-size: 14px;
-
+   justify-content: center;
 }
 
 .header-text .professions {

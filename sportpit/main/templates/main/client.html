@@ -76,40 +76,184 @@
 </div>
 
 <section class="home">
-    <div class="upper_text">
-        <b3>Наши клиенты</b3>
-        <b3>OneCRM</b3>
-    </div>
-    <div class="card_menu">
-        <div class="upper_table_client">
-            <div class="search-table-inputs">
-                <div class="search_table">
-                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
-                </div>
-                <div class="search_table">
-                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
-                </div>
-                <div class="search_table">
-                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
-                </div>
-                <div class="search_table">
-                    <input placeholder="Найти сотрудника" class="input" name="firstName" type="text">
+    <div class="up_bar">
+        <div class="upper_table_user">
+            <div class="upper_table">
+                <button class="btn" id="openClientFormClientBtn">Добавить</button>
+
+
+                <form method="get">
+                    <div class="input-container">
+                        <input placeholder="Найти сотрудника" class="input" name="search" id="searchInput"
+                               type="text"
+                               value="{{ search_query|default:'' }}">
+                        <button class="button" type="submit" value="Search"><i class='bx bx-search icon'></i>
+                        </button>
+                    </div>
+
+
+                    <!--                        <input type="submit" value="Search">-->
+                    <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                    <input type="hidden" name="direction" value="{{ direction }}">
+                </form>
+
+            </div>
+            <div class="upper_table">
+                <div class="upper_text">
+                    <b3>Клиенты&nbsp;</b3>
+                    <b3>OneCRM</b3>
                 </div>
             </div>
-            <button class="btn" id="openClientFormClientBtn">Добавить</button>
+
+            <div class="upper_table">
+                <div class="current-page">
+                    <!--                            Страница {{ users.number }} из {{ users.paginator.num_pages }}-->
+                    <b3>Всего сотрудников: {{ clients.paginator.count }}</b3>
+                    На странице с {{ clients.start_index }} по {{ clients.end_index }}
+                </div>
+
+                <div class="page-buttons">
+                    <div class="in-page-buttons">
+                        <form class="pagination-form" method="get">
+                            {% if search_query %}
+                            <input type="hidden" name="search" value="{{ search_query }}">
+                            {% endif %}
+                            <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                            <input type="hidden" name="direction" value="{{ direction }}">
+                            <button type="submit" name="page"
+                                    value="{% if clients.has_previous %}{{ clients.previous_page_number }}{% else %}1{% endif %}"
+                                    class="{% if not clients.has_previous %}disabled-button{% endif %}">
+                                <i class="fas fa-chevron-left"></i> <!-- FontAwesome иконка влево -->
+                            </button>
+                        </form>
+                    </div>
+                    <div class="in-page-buttons">
+                        <form class="pagination-form" method="get">
+                            {% if search_query %}
+                            <input type="hidden" name="search" value="{{ search_query }}">
+                            {% endif %}
+                            <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                            <input type="hidden" name="direction" value="{{ direction }}">
+                            <button type="submit" name="page"
+                                    value="{% if clients.has_next %}{{ clients.next_page_number }}{% else %}{{ clients.paginator.num_pages }}{% endif %}"
+                                    class="{% if not clients.has_next %}disabled-button{% endif %}">
+                                <i class="fas fa-chevron-right"></i> <!-- FontAwesome иконка вправо -->
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="page-numbers">
+                    <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                       class="{% if clients.number == 1 %}current{% endif %}">1</a>
+                    {% if clients.number > 4 %}
+                    <span class="ellipsis">...</span>
+                    {% endif %}
+                    {% for num in page_range %}
+                    {% if num != 1 and num != clients.paginator.num_pages %}
+                    <a href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                       class="{% if num == clients.number %}current{% endif %}">{{ num }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if clients.number < clients.paginator.num_pages|add:"-3" %}
+                    <span class="ellipsis">...</span>
+                    {% endif %}
+                    <a href="?page={{ clients.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                       class="{% if clients.number == clients.paginator.num_pages %}current{% endif %}">
+                        {{ clients.paginator.num_pages }}</a>
+                </div>
+            </div>
+
         </div>
+    </div>
+
+    <div class="table-scroll-work">
         <table class="custom-table">
             <tr>
-                <th>ФИО</th>
-                <th>Email</th>
-                <th>Телефон</th>
-                <th>Организация</th>
-                <th>ИНН организации</th>
-                <th>Расчётный счёт</th>
+                <th>
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox" value="{{ clients.id }}">
+                        <span class="checkmark"></span>
+                    </label>
+
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        ФИО
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=last_name&direction={% if sort_by == 'last_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'last_name' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'last_name' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        Email
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=email&direction={% if sort_by == 'email' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'email' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'email' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        Телефон
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=contact_number&direction={% if sort_by == 'contact_number' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'contact_number' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'contact_number' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        Организация
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=organization_name&direction={% if sort_by == 'organization_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'organization_name' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'organization_name' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    ИНН организации
+                </th>
+                <th>
+                    Расчётный счёт
+                </th>
             </tr>
             {% for client in clients %}
             <tr class="user-row">
-                <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</a></td>
+                <td>
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox" value="{{ client.id }}">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td class="user-cell"><a href="{% url 'client-details' client.id %}">
+                    {{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}</a></td>
                 <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.email }}</a></td>
                 <td class="user-cell"><a href="{% url 'client-details' client.id %}">{{ client.contact_number }}</a>
                 </td>
@@ -151,6 +295,12 @@ userCells.forEach(cell => {
         }
     });
 });
+
+
+
+
+
+
 
 
 
