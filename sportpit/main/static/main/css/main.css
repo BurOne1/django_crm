@@ -109,9 +109,10 @@ main {
    display: flex;
    justify-content: space-between;
    width: 100%;
+
    font-size: 28px;
    font-weight: 500;
-   color: #FFF;
+   color: #505050;
 
 }
 
@@ -708,7 +709,7 @@ textarea:hover, select:hover, input[type="file"]:hover, input:hover {
 }
 
 .table-scroll-work {
-  margin: 12px;
+  margin: 12px 12px 0 12px;
 
   flex: 1;
   overflow-y: auto; /* Добавляем вертикальный скроллинг при необходимости. */

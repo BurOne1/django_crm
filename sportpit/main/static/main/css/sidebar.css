@@ -1,15 +1,14 @@
-
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .sideBar .text{
    font-size: 12px;
    font-weight: 500;
-   color: #707070;
+   color: #FFF;
    transition: all .3s ease;
    white-space: nowrap;
 
 }
-
-
 
 .sideBar .image{
    min-weight: 60px;
@@ -18,16 +17,16 @@
 
 }
 /* 3 */
+/* 557a55 */
+/* 47704b */
 .sideBar{
    position: fixed;
    top: 0;
    left: 0;
    height: 100%;
-   width: 60px;
-   padding: 10px 14px;
-   background: #FFF;
-   /*background: #646464;*/
+   width: 88px;
 
+   background: #557a55;
 
    z-index: 100;
 }
@@ -47,7 +46,7 @@
 }
 
 .sideBar .menu {
-   margin-top: 25px;
+   margin-top: 12px;
 }
 
 .sideBar header {
@@ -65,13 +64,13 @@
 }
 .sideBar li .icon,
 .sideBar li .text{
-   color: #707070;
+   color: #FFF;
    transition: all .3s ease;
 }
 
 .sideBar .image-text img{
-  width: 40px;
-  border-radius: 6px;
+  width: 100%;
+
 }
 
 .sideBar header .image-text{
@@ -134,4 +133,5 @@ header .image-text .header-text {
    display: flex;
    flex-direction: column;
    justify-content: space-between;
+   padding: 10px 14px;
 }

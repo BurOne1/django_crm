@@ -13,42 +13,37 @@
 <section class="home">
 
 
-        <div class="up_bar">
-            <div class="upper_table_user">
-                <div class="upper_table">
-                    <button class="btn">Добавить</button>
-
-
-                    <form method="get">
-                        <div class="input-container">
-                            <input placeholder="Найти сотрудника" class="input" name="search" id="searchInput"
-                                   type="text"
-                                   value="{{ search_query|default:'' }}">
-                            <button class="button" type="submit" value="Search"><i class='bx bx-search icon'></i>
-                            </button>
-                        </div>
-
-
-                        <!--                        <input type="submit" value="Search">-->
-                        <input type="hidden" name="sort_by" value="{{ sort_by }}">
-                        <input type="hidden" name="direction" value="{{ direction }}">
-                    </form>
-
+    <div class="up_bar">
+        <div class="upper_table_user">
+            <div class="upper_table_a">
+                <div class="upper_text">
+                    <b3>Персонал</b3>
                 </div>
-                <div class="upper_table">
-                    <div class="upper_text">
-                        <b3>Персонал&nbsp;</b3>
-                        <b3>OneCRM</b3>
+                <div class="separator"></div>
+            </div>
+            <div class="upper_table_b">
+
+                <form method="get">
+                    <div class="input-container">
+                        <i class='bx bx-search icon'></i>
+                        <input placeholder="Поиск и фильтр" class="input" name="search" id="searchInput"
+                               type="text"
+                               value="{{ search_query|default:'' }}">
+                        <!--                            <button class="button" type="submit" value="Search"><i class='bx bx-search icon'></i>-->
+                        <!--                            </button>-->
                     </div>
-                </div>
 
-                <div class="upper_table">
+
+                    <!--                        <input type="submit" value="Search">-->
+                    <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                    <input type="hidden" name="direction" value="{{ direction }}">
+                </form>
+                <div class="search_dop">
                     <div class="current-page">
                         <!--                            Страница {{ users.number }} из {{ users.paginator.num_pages }}-->
                         <b3>Всего сотрудников: {{ users.paginator.count }}</b3>
                         На странице с {{ users.start_index }} по {{ users.end_index }}
                     </div>
-
                     <div class="page-buttons">
                         <div class="in-page-buttons">
                             <form class="pagination-form" method="get">
@@ -79,7 +74,6 @@
                             </form>
                         </div>
                     </div>
-
                     <div class="page-numbers">
                         <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
                            class="{% if users.number == 1 %}current{% endif %}">1</a>
@@ -101,130 +95,144 @@
                     </div>
                 </div>
 
+
             </div>
+
+
+            <div class="upper_table_c">
+                <div class="separator"></div>
+                <div class="menu_dop">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <button class="btn">Добавить</button>
+                <button class="btn_settings">Настройки</button>
+
+            </div>
+
         </div>
+    </div>
 
-        <!--        <div class="card_menu">-->
-        <!--            <div class="upper_text">-->
+    <!--        <div class="card_menu">-->
+    <!--            <div class="upper_text">-->
 
-        <!--                <b3>OneCRM</b3>-->
-        <!--            </div>-->
+    <!--                <b3>OneCRM</b3>-->
+    <!--            </div>-->
 
-        <div class="table-scroll-work">
-            <table class="pagination_users_t" id="user-table">
-                <thead>
-                <tr>
-                    <th>
-                        <label class="custom-checkbox">
-                            <input name="dummy" type="checkbox" value="{{ users.id }}">
-                            <span class="checkmark"></span>
-                        </label>
+    <div class="table-scroll-work">
+        <table class="pagination_users_t" id="user-table">
+            <thead>
+            <tr>
+                <th>
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox" value="{{ users.id }}">
+                        <span class="checkmark"></span>
+                    </label>
 
-                    </th>
-                    <th>
-                        <div class="into_h_table">
-                            Имя
-                            <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=first_name&direction={% if sort_by == 'first_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #f0b4a6">
-                                {% if sort_by == 'first_name' and direction == 'asc' %}
-                                <i class="fa-solid fa-sort-down"></i>
-                                {% elif sort_by == 'first_name' and direction == 'desc' %}
-                                <i class="fa-solid fa-sort-up"></i>
-                                {% else %}
-                                <i class="fa-solid fa-sort" style="color: #707070"></i>
-                                {% endif %}
-                            </a>
-                        </div>
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        Имя
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=first_name&direction={% if sort_by == 'first_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'first_name' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'first_name' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
 
 
-                    </th>
-                    <th>
-                        <div class="into_h_table">
-                            Фамилия
-                            <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=last_name&direction={% if sort_by == 'last_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #f0b4a6">
-                                {% if sort_by == 'last_name' and direction == 'asc' %}
-                                <i class="fa-solid fa-sort-down"></i>
-                                {% elif sort_by == 'last_name' and direction == 'desc' %}
-                                <i class="fa-solid fa-sort-up"></i>
-                                {% else %}
-                                <i class="fa-solid fa-sort" style="color: #707070"></i>
-                                {% endif %}
-                            </a>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="into_h_table">
-                            Email
-                            <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=email&direction={% if sort_by == 'email' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #f0b4a6">
-                                {% if sort_by == 'email' and direction == 'asc' %}
-                                <i class="fa-solid fa-sort-down"></i>
-                                {% elif sort_by == 'email' and direction == 'desc' %}
-                                <i class="fa-solid fa-sort-up"></i>
-                                {% else %}
-                                <i class="fa-solid fa-sort" style="color: #707070"></i>
-                                {% endif %}
-                            </a>
-                        </div>
-                    </th>
-                    <!--                        username date  -->
-                    <th>
-                        <div class="into_h_table">
-                            Телефон
-                            <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=username&direction={% if sort_by == 'username' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #f0b4a6">
-                                {% if sort_by == 'username' and direction == 'asc' %}
-                                <i class="fa-solid fa-sort-down"></i>
-                                {% elif sort_by == 'username' and direction == 'desc' %}
-                                <i class="fa-solid fa-sort-up"></i>
-                                {% else %}
-                                <i class="fa-solid fa-sort" style="color: #707070"></i>
-                                {% endif %}
-                            </a>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="into_h_table">
-                            Регистрация
-                            <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=date_joined&direction={% if sort_by == 'date_joined' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                               style="color: #f0b4a6">
-                                {% if sort_by == 'date_joined' and direction == 'asc' %}
-                                <i class="fa-solid fa-sort-down"></i>
-                                {% elif sort_by == 'date_joined' and direction == 'desc' %}
-                                <i class="fa-solid fa-sort-up"></i>
-                                {% else %}
-                                <i class="fa-solid fa-sort" style="color: #707070"></i>
-                                {% endif %}
-                            </a>
-                        </div>
-                    </th>
-                    <!--                        Старый вариант (решил сохранить)-->
-                    <!--                        <th>Дата рег <a-->
-                    <!--                                href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=date_joined&direction={{ direction }}"-->
-                    <!--                                style="color: green"><i class="fa-solid fa-sort"></i></a></th>-->
-                </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
-                <tr class="user-row">
-                    <td>
-                        <label class="custom-checkbox">
-                            <input name="dummy" type="checkbox" value="{{ user.id }}">
-                            <span class="checkmark"></span>
-                        </label>
-                    </td>
-                    <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.first_name }}</a></td>
-                    <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.last_name }}</a></td>
-                    <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.email }}</a></td>
-                    <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.username }}</a></td>
-                    <td class="user-cell"><a href="{% url 'user-details' user.id %}">
-                        {{ user.date_joined|date:"d.m.Y" }}</a></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        Фамилия
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=last_name&direction={% if sort_by == 'last_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'last_name' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'last_name' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        Email
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=email&direction={% if sort_by == 'email' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'email' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'email' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <!--                        username date  -->
+                <th>
+                    <div class="into_h_table">
+                        Телефон
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=username&direction={% if sort_by == 'username' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'username' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'username' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    <div class="into_h_table">
+                        Регистрация
+                        <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=date_joined&direction={% if sort_by == 'date_joined' and direction == 'asc' %}desc{% else %}asc{% endif %}"
+                           style="color: #f0b4a6">
+                            {% if sort_by == 'date_joined' and direction == 'asc' %}
+                            <i class="fa-solid fa-sort-down"></i>
+                            {% elif sort_by == 'date_joined' and direction == 'desc' %}
+                            <i class="fa-solid fa-sort-up"></i>
+                            {% else %}
+                            <i class="fa-solid fa-sort" style="color: #707070"></i>
+                            {% endif %}
+                        </a>
+                    </div>
+                </th>
+                <!--                        Старый вариант (решил сохранить)-->
+                <!--                        <th>Дата рег <a-->
+                <!--                                href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=date_joined&direction={{ direction }}"-->
+                <!--                                style="color: green"><i class="fa-solid fa-sort"></i></a></th>-->
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+            <tr class="user-row">
+                <td>
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox" value="{{ user.id }}">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.first_name }}</a></td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.last_name }}</a></td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.email }}</a></td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">{{ user.username }}</a></td>
+                <td class="user-cell"><a href="{% url 'user-details' user.id %}">
+                    {{ user.date_joined|date:"d.m.Y" }}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 
     <!--    </div>-->
@@ -268,6 +276,8 @@ $(document).ready(function () {
         });
     });
 });
+
+
 
 
 
