@@ -6,9 +6,11 @@
    /* --main-color: #86b261; зелёный-оливковый*/
    /* --main-color: #228B22; Лесной*/
    /* --main-color: #94b194; */
-   /* --main-color: #557a55; */
+   /* --main-color: #557a55; sidebar*/
    --main-color: #FFF;
    --main-two-color: #557A6E;
+   --main-sidebar-color: #228B22;
+   --main-blue-color: #4f9cd6;
 }
 
 * {
@@ -28,7 +30,7 @@
 .separator {
     height: 100%; /* Adjust the height of the separator line */
     width: 1px; /* Adjust the width of the separator line */
-    background-color:  var(--main-two-color); /* Adjust the color of the separator line */
+    background-color:  var(--main-sidebar-color); /* Adjust the color of the separator line */
     margin: 0 10px; /* Adjust the margin as needed */
 }
 
@@ -73,14 +75,14 @@
 }
 
 .menu_dop{
-  color: #557A6E;
+  color: #606060;
   font-size: 20px;
   margin-right: 20px;
   margin-left: 10px;
 }
 
 .btn {
-  background-color: #557A6E;
+  background-color: var(--main-sidebar-color);
   color: #FFF;
   border: none;
   border-radius: 4px;
@@ -93,7 +95,7 @@
 }
 
 .btn_settings {
-  background-color: #4f9cd6;
+  background-color: var(--main-blue-color);
   color: #FFF;
   border: none;
   border-radius: 4px;
@@ -198,7 +200,7 @@ a.current {
     border: none;
     cursor: pointer;
     margin: 0 2px;
-    background-color: var(--main-two-color);
+    background-color: var(--main-sidebar-color);
     border-radius: 6px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -269,7 +271,7 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-   background-color: #f0e2df;
+   background-color: #ECFAEC;
 }
 
 .pagination_users_t th:nth-child(1),
@@ -366,6 +368,25 @@ tr:hover {
 .custom-checkbox .checkmark,
 .custom-checkbox input[type="checkbox"]:checked + .checkmark {
   transition: background-color 1.3s, border-color 1.3s, color 1.3s, transform 0.3s;
+}
+
+.checkbox-cell {
+  position: relative;
+}
+
+.checkbox-cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--main-sidebar-color);
+  display: none;
+}
+
+.checkbox-cell.checked::before {
+  display: block;
 }
 
 

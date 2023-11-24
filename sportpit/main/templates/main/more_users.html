@@ -11,8 +11,6 @@
 
 
 <section class="home">
-
-
     <div class="up_bar">
         <div class="upper_table_user">
             <div class="upper_table_a">
@@ -21,18 +19,18 @@
                 </div>
                 <div class="separator"></div>
             </div>
+
             <div class="upper_table_b">
 
                 <form method="get">
                     <div class="input-container">
                         <i class='bx bx-search icon'></i>
-                        <input placeholder="Поиск и фильтр" class="input" name="search" id="searchInput"
+                        <input placeholder="Поиск и фильтры" class="input" name="search" id="searchInput"
                                type="text"
                                value="{{ search_query|default:'' }}">
                         <!--                            <button class="button" type="submit" value="Search"><i class='bx bx-search icon'></i>-->
                         <!--                            </button>-->
                     </div>
-
 
                     <!--                        <input type="submit" value="Search">-->
                     <input type="hidden" name="sort_by" value="{{ sort_by }}">
@@ -122,7 +120,7 @@
         <table class="pagination_users_t" id="user-table">
             <thead>
             <tr>
-                <th>
+                <th class="checkbox-cell">
                     <label class="custom-checkbox">
                         <input name="dummy" type="checkbox" value="{{ users.id }}">
                         <span class="checkmark"></span>
@@ -133,7 +131,7 @@
                     <div class="into_h_table">
                         Имя
                         <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=first_name&direction={% if sort_by == 'first_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                           style="color: #f0b4a6">
+                           style="color: #228B22">
                             {% if sort_by == 'first_name' and direction == 'asc' %}
                             <i class="fa-solid fa-sort-down"></i>
                             {% elif sort_by == 'first_name' and direction == 'desc' %}
@@ -150,7 +148,7 @@
                     <div class="into_h_table">
                         Фамилия
                         <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=last_name&direction={% if sort_by == 'last_name' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                           style="color: #f0b4a6">
+                           style="color: #228B22">
                             {% if sort_by == 'last_name' and direction == 'asc' %}
                             <i class="fa-solid fa-sort-down"></i>
                             {% elif sort_by == 'last_name' and direction == 'desc' %}
@@ -165,7 +163,7 @@
                     <div class="into_h_table">
                         Email
                         <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=email&direction={% if sort_by == 'email' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                           style="color: #f0b4a6">
+                           style="color: #228B22">
                             {% if sort_by == 'email' and direction == 'asc' %}
                             <i class="fa-solid fa-sort-down"></i>
                             {% elif sort_by == 'email' and direction == 'desc' %}
@@ -181,7 +179,7 @@
                     <div class="into_h_table">
                         Телефон
                         <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=username&direction={% if sort_by == 'username' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                           style="color: #f0b4a6">
+                           style="color: #228B22">
                             {% if sort_by == 'username' and direction == 'asc' %}
                             <i class="fa-solid fa-sort-down"></i>
                             {% elif sort_by == 'username' and direction == 'desc' %}
@@ -196,7 +194,7 @@
                     <div class="into_h_table">
                         Регистрация
                         <a href="?{% if search_query %}search={{ search_query }}&{% endif %}sort_by=date_joined&direction={% if sort_by == 'date_joined' and direction == 'asc' %}desc{% else %}asc{% endif %}"
-                           style="color: #f0b4a6">
+                           style="color: #228B22">
                             {% if sort_by == 'date_joined' and direction == 'asc' %}
                             <i class="fa-solid fa-sort-down"></i>
                             {% elif sort_by == 'date_joined' and direction == 'desc' %}
@@ -216,7 +214,7 @@
             <tbody>
             {% for user in users %}
             <tr class="user-row">
-                <td>
+                <td class="checkbox-cell">
                     <label class="custom-checkbox">
                         <input name="dummy" type="checkbox" value="{{ user.id }}">
                         <span class="checkmark"></span>
@@ -277,12 +275,14 @@ $(document).ready(function () {
     });
 });
 
-
-
-
-
-
-
+// Добавляем класс "checked" при изменении состояния checkbox
+$('.custom-checkbox input[type="checkbox"]').change(function () {
+    if ($(this).prop('checked')) {
+        $(this).closest('.checkbox-cell').addClass('checked');
+    } else {
+        $(this).closest('.checkbox-cell').removeClass('checked');
+    }
+});
 
 </script>
 
